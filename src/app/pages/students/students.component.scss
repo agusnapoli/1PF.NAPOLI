@@ -1,0 +1,33 @@
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.mat-typography {
+  background-color: #8a7a7ad5;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+
+.with-background {
+  background-color: #8a7a7ad5;
+  padding: 20px;
+}
+
+button {
+  margin-bottom: 20px;
+}
+
+table {
+  background-color: #846b6bd5;
+  margin-top: 40px;
+}
+
+mat-form-field {
+  background-color: #846b6bd5;
+}

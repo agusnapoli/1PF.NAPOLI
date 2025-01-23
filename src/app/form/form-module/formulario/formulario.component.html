@@ -1,0 +1,42 @@
+<div class="form-container">
+  <span appLetterSize >Agregando estudiante</span>
+
+  <form [formGroup]="studentsForm" (ngSubmit)="onSubmit()">
+    <div class="grid">
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="name" matInput (blur)="markAsTouched('name')">
+          <mat-error *ngIf="isFieldRequired('name')">El nombre es requerido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Apellido</mat-label>
+          <input formControlName="lastname" matInput (blur)="markAsTouched('lastname')">
+          <mat-error *ngIf="isFieldRequired('lastname')">El apellido es requerido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Edad</mat-label>
+          <input matInput (blur)="markAsTouched('age')" formControlName="age" />
+          <mat-error *ngIf="isFieldRequired('age')">La edad es requerida</mat-error>
+          <mat-error *ngIf="isFieldInvalidPattern('age')">Solo se permiten números</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Curso</mat-label>
+          <input formControlName="course" matInput (blur)="markAsTouched('course')" >
+          <mat-error *ngIf="isFieldRequired('course')">El curso es requerido</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button mat-raised-button type="submit">Guardar</button>
+  </form>
+</div>

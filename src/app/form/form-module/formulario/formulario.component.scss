@@ -1,0 +1,34 @@
+.form-container {
+  background-color: #846b6bd5;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 500px;
+}
+
+mat-form-field {
+  width: 100%;
+  font-size: 18px;
+}
+
+input {
+  font-size: 18px;
+  padding: 10px;
+}
+
+button {
+  font-size: 18px;
+  padding: 12px 24px;
+}
+
+.col-6 {
+  flex: 0 0 48%;
+  margin: 10px;
+}
+
+mat-form-field input:focus {
+  border-color: black;
+  outline: none;
+}

@@ -1,0 +1,15 @@
+<div>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <div class="button-container">
+        <button (click)="onToggleStudents()" mat-raised-button>
+          Administrar estudiantes
+        </button>
+      </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <app-toolbar (drawerT)="drawer.toggle()"></app-toolbar>
+    </div>
+  </mat-drawer-container>
+</div>
