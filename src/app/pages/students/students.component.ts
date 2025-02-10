@@ -1,22 +1,28 @@
-import { Component, EventEmitter, Input, Output, output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { StudentsService } from './students.service';
 import { Student } from '../../shared/models/students.model';
-
 
 @Component({
   selector: 'app-students',
   standalone: false,
-
   templateUrl: './students.component.html',
-  styleUrl: './students.component.scss'
+  styleUrls: ['./students.component.scss']
 })
-// students.component.ts
-export class StudentsComponent {
+export class StudentsComponent implements OnInit {
 
   showForm: boolean = false;
-  @Input() showStudents: boolean = false;
-    // Recibe el estado desde el componente padre
-  students: Student[] = [];
-  editinStudentid: string | null = null;
+  @Input() showStudents: boolean = false; // Recibe el estado desde el componente padre
+  students: Student[] = []; // Lista de estudiantes
+  selectedStudent: Student | null = null; // Estudiante seleccionado para edición
+
+  constructor(private studentsService: StudentsService) { } // Inyección del servicio
+
+  ngOnInit(): void {
+    this.studentsService.getStudents().subscribe(data => {
+      this.students = data; // Asignar los datos obtenidos al arreglo de estudiantes
+    });
+  }
+
   // Método que alterna la visibilidad del formulario
   toggleForm(): void {
     this.showForm = !this.showForm;
@@ -40,16 +46,11 @@ export class StudentsComponent {
     console.log(this.students);
   }
 
-
   displayedColumns: string[] = ['name', 'age', 'course', 'acciones'];
-
 
   deleteStudent(student: Student) {
     this.students = this.students.filter(s => s !== student);
   }
-
-
-  selectedStudent: Student | null = null;
 
   // Método para seleccionar un estudiante y enviarlo al formulario
   editStudent(student: Student): void {
