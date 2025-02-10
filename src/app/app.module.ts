@@ -8,6 +8,7 @@ import { ModulesModule } from './dashboard/modules/modules.module';
 import { StudentsModule } from './pages/students/students.module';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ClasesModule } from "./pages/clases/clases.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ModulesModule,
     StudentsModule,
     CoursesModule // Se mantiene en imports
-  ],
+    ,
+    ClasesModule
+],
   providers: [
     provideAnimationsAsync()
   ],
