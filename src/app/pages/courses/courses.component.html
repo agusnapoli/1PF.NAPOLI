@@ -1,33 +1,23 @@
-  <div *ngIf="showCourses" class="centered-container with-background">
+<div *ngIf="showCourses" class="centered-container with-background">
   <button mat-raised-button *ngIf="!showForm" (click)="toggleForm()">Add Course</button>
 
   <div *ngIf="showForm">
-    <form (ngSubmit)="addCourse(courseForm.value)" #courseForm="ngForm">
+    <form (ngSubmit)="addCourse(courseForm.value)" #courseForm="ngForm" class="form-container">
       <mat-form-field>
         <mat-label>Course Name</mat-label>
         <input matInput required name="name" [(ngModel)]="selectedCourse.name">
-
-
-
-
-
-
-
       </mat-form-field>
+
       <mat-form-field>
         <mat-label>Description</mat-label>
         <input matInput required name="description" [(ngModel)]="selectedCourse.description">
-
-
-
-
-
-
-
       </mat-form-field>
 
-      <button mat-raised-button type="submit">Submit</button>
-      <button mat-button type="button" (click)="toggleForm()">Cancel</button>
+      <!-- Contenedor para los botones -->
+      <div class="form-buttons">
+        <button mat-raised-button type="submit" color="primary">Submit</button>
+        <button mat-button type="button" (click)="toggleForm()">Cancel</button>
+      </div>
     </form>
   </div>
 
