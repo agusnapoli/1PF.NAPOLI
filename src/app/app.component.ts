@@ -11,13 +11,13 @@ export class AppComponent {
   showStudents: boolean = false;  // Esta variable controla si el componente Students se muestra
   showCourses: boolean = false; // Esta variable controla si el componente Courses se muestra
 
+  // Método para cambiar el estado de showStudents
   toggleStudents() {
-    this.showStudents = !this.showStudents;
-    if (this.showStudents) this.showCourses = false; // Asegura que solo uno esté visible a la vez
+    this.showStudents = !this.showStudents; // Cambia el valor de showStudents al hacer clic
   }
 
+  // Método para cambiar el estado de showCourses
   toggleCourses() {
-    this.showCourses = !this.showCourses;
-    if (this.showCourses) this.showStudents = false; // Asegura que solo uno esté visible a la vez
+    this.showCourses = !this.showCourses; // Cambia el valor de showCourses al hacer clic
   }
 }

@@ -13,10 +13,10 @@ export class NavbarComponent {
   @Output() toggleCourses = new EventEmitter<void>();  // Evento para alternar cursos
 
   onToggleStudents() {
-    this.toggleStudents.emit();  
+    this.toggleStudents.emit();
   }
 
   onToggleCourses() {
-    this.toggleCourses.emit();  
+    this.toggleCourses.emit();
   }
 }
