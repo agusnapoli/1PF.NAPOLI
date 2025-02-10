@@ -9,11 +9,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = '1PFNAPOLI';
   showStudents: boolean = false;  // Esta variable controla si el componente Students se muestra
-  showCourses: boolean = true; // Esta variable controla si el componente Courses se muestra
+  showCourses: boolean = false; // Esta variable controla si el componente Courses se muestra
 
-
-  // Método para cambiar el estado de showStudents
   toggleStudents() {
-    this.showStudents = !this.showStudents; // Cambia el valor de showStudents al hacer clic
+    this.showStudents = !this.showStudents;
+    if (this.showStudents) this.showCourses = false; // Asegura que solo uno esté visible a la vez
+  }
+
+  toggleCourses() {
+    this.showCourses = !this.showCourses;
+    if (this.showCourses) this.showStudents = false; // Asegura que solo uno esté visible a la vez
   }
 }

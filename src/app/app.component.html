@@ -1,8 +1,8 @@
 <!-- app.component.html -->
-<app-navbar (toggleStudents)="toggleStudents()"></app-navbar>
+<app-navbar (toggleStudents)="toggleStudents()" (toggleCourses)="toggleCourses()"></app-navbar>
 
 <main>
-  <app-courses [showCourses]="showCourses"></app-courses>
+  <app-courses *ngIf="showCourses" [showCourses]="showCourses"></app-courses>
 
-  <app-students [showStudents]="showStudents"></app-students>
+  <app-students *ngIf="showStudents" [showStudents]="showStudents"></app-students>
 </main>
