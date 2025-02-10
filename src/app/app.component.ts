@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = '1PFNAPOLI';
   showStudents: boolean = false;  // Esta variable controla si el componente Students se muestra
+  showCourses: boolean = true; // Esta variable controla si el componente Courses se muestra
+
 
   // Método para cambiar el estado de showStudents
   toggleStudents() {

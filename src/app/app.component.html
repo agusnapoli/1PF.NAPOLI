@@ -1,5 +1,8 @@
 <!-- app.component.html -->
 <app-navbar (toggleStudents)="toggleStudents()"></app-navbar>
+
 <main>
+  <app-courses [showCourses]="showCourses"></app-courses>
+
   <app-students [showStudents]="showStudents"></app-students>
 </main>
