@@ -1,4 +1,25 @@
-<!-- Contenedor con la tabla y el formulario separado -->
+<!-- Formulario separado -->
+<div *ngIf="showForm" class="centered-container with-background">
+  <form (ngSubmit)="addCourse(courseForm.value)" #courseForm="ngForm" class="form-container">
+    <mat-form-field>
+      <mat-label>Course Name</mat-label>
+      <input matInput required name="name" [(ngModel)]="selectedCourse.name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput required name="description" [(ngModel)]="selectedCourse.description">
+    </mat-form-field>
+
+    <!-- Contenedor para los botones -->
+    <div class="form-buttons">
+      <button mat-raised-button type="submit" color="primary">Submit</button>
+      <button mat-button type="button" (click)="toggleForm()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- Contenedor con la tabla -->
 <div *ngIf="showCourses" class="centered-container with-background">
   <!-- Botón para agregar un curso -->
   <button mat-raised-button *ngIf="!showForm" (click)="toggleForm()">Add Course</button>
@@ -33,25 +54,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</div>
-
-<!-- Formulario separado -->
-<div *ngIf="showForm" class="centered-container with-background">
-  <form (ngSubmit)="addCourse(courseForm.value)" #courseForm="ngForm" class="form-container">
-    <mat-form-field>
-      <mat-label>Course Name</mat-label>
-      <input matInput required name="name" [(ngModel)]="selectedCourse.name">
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Description</mat-label>
-      <input matInput required name="description" [(ngModel)]="selectedCourse.description">
-    </mat-form-field>
-
-    <!-- Contenedor para los botones -->
-    <div class="form-buttons">
-      <button mat-raised-button type="submit" color="primary">Submit</button>
-      <button mat-button type="button" (click)="toggleForm()">Cancel</button>
-    </div>
-  </form>
 </div>
