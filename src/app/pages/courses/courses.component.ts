@@ -13,7 +13,7 @@ export class CoursesComponent implements OnInit {
   @Input() showCourses: boolean = false;
   courses: Course[] = [];
   editingCourseId: string | null = null;
-  selectedCourse: Course | null = null;
+  selectedCourse: Course = { id: '', name: '', description: '' }; // Initialize with an empty object
 
   constructor(private coursesService: CoursesService) {}
 
@@ -32,15 +32,15 @@ export class CoursesComponent implements OnInit {
   }
 
   addCourse(course: Course): void {
-    if (this.selectedCourse) {
+    if (this.selectedCourse.id) { // Check if editing an existing course
       this.courses = this.courses.map(c =>
-        c === this.selectedCourse ? { ...c, ...course } : c
+        c.id === this.selectedCourse.id ? { ...c, ...course } : c
       );
     } else {
       this.courses = [...this.courses, course];
     }
 
-    this.selectedCourse = null;
+    this.selectedCourse = { id: '', name: '', description: '' }; // Reset to a new empty object
     console.log(this.courses);
   }
 
