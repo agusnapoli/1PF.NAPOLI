@@ -5,37 +5,29 @@
       <input matInput required name="name" [(ngModel)]="selectedClase.name" placeholder="Ingrese el nombre de la clase">
     </mat-form-field>
 
-    <!-- Contenedor para los botones -->
     <div class="form-buttons">
-      <!-- Deshabilitar el botón si el formulario no es válido -->
       <button mat-raised-button type="submit" color="primary" [disabled]="!claseForm.valid">Agregar</button>
       <button mat-raised-button type="button" (click)="toggleForm()">Cancelar</button>
     </div>
   </form>
 
 
-<!-- Contenedor con la tabla -->
 <div  class="centered-container with-background">
 
-  <!-- Botón para agregar una clase -->
   <button mat-raised-button (click)="toggleForm()">Agregar clase</button>
 
-  <!-- Tabla de clases -->
   <table mat-table [dataSource]="clases" class="mat-elevation-z8">
 
-    <!-- Nombre de la clase -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Clase </th>
       <td mat-cell *matCellDef="let clase"> {{ clase.name }} </td>
     </ng-container>
 
-    <!-- Descripción -->
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef> Descripción </th>
       <td mat-cell *matCellDef="let clase"> {{ clase.description }} </td>
     </ng-container>
 
-    <!-- Acciones -->
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let clase">

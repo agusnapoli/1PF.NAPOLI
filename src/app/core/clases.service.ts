@@ -19,17 +19,14 @@ export class ClasesService {
 
   constructor() { }
 
-  // Método que devuelve un observable con las clases
   getClases(): Observable<Clase[]> {
     return of(this.clases);
   }
 
-  // Método para agregar una nueva clase
   addClase(clase: Clase): void {
     this.clases.push(clase);
   }
 
-  // Método para actualizar una clase existente
   updateClase(updatedClase: Clase): void {
     const index = this.clases.findIndex(clase => clase.id === updatedClase.id);
     if (index !== -1) {
@@ -37,7 +34,6 @@ export class ClasesService {
     }
   }
 
-  // Método para eliminar una clase por su ID
   deleteClase(claseId: string): void {
     this.clases = this.clases.filter(clase => clase.id !== claseId);
   }

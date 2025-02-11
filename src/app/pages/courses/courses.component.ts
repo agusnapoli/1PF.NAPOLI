@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Course } from '../../shared/models/courses.model';
-import { CoursesService } from './courses.service';
+import { CoursesService } from '../../core/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -13,7 +13,7 @@ export class CoursesComponent implements OnInit {
   @Input() showCourses: boolean = false;
   courses: Course[] = [];
   editingCourseId: string | null = null;
-  selectedCourse: Course = { id: '', name: '', description: '' }; // Initialize with an empty object
+  selectedCourse: Course = { id: '', name: '', description: '' };
 
   constructor(private coursesService: CoursesService) {}
 
@@ -32,7 +32,7 @@ export class CoursesComponent implements OnInit {
   }
 
   addCourse(course: Course): void {
-    if (this.selectedCourse.id) { // Check if editing an existing course
+    if (this.selectedCourse.id) {
       this.courses = this.courses.map(c =>
         c.id === this.selectedCourse.id ? { ...c, ...course } : c
       );
@@ -40,7 +40,7 @@ export class CoursesComponent implements OnInit {
       this.courses = [...this.courses, course];
     }
 
-    this.selectedCourse = { id: '', name: '', description: '' }; // Reset to a new empty object
+    this.selectedCourse = { id: '', name: '', description: '' };
     console.log(this.courses);
   }
 

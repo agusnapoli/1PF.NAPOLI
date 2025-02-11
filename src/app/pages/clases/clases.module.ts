@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClasesComponent } from './clases.component'; // Importar el componente
+import { ClasesComponent } from './clases.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon'; // Importar MatIconModule
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field'; // Importar MatFormFieldModule
-import { MatInputModule } from '@angular/material/input'; // Importar MatInputModule
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { ClasesRoutingModule } from './clases-routing.module';
 
 @NgModule({
-  declarations: [ClasesComponent], // Declarar el componente aquí
+  declarations: [ClasesComponent],
   imports: [
     CommonModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule, // Agregar MatIconModule a las importaciones
+    MatIconModule,
     FormsModule,
-    MatFormFieldModule, // Agregar MatFormFieldModule a las importaciones
+    MatFormFieldModule,
     MatInputModule,
-    ClasesRoutingModule// Agregar MatInputModule a las importaciones
+    ClasesRoutingModule
   ],
-  exports: [ClasesComponent] // Exportar el componente
+  exports: [ClasesComponent]
 })
 export class ClasesModule { }

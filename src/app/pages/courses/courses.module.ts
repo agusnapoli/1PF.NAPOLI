@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field'; // Import MatFormFieldModule
-import { MatInputModule } from '@angular/material/input'; // Import MatInputModule
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from '../../shared/shared.module';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { CoursesRoutingModule } from './courses-routing.module';
 
@@ -19,9 +19,9 @@ import { CoursesRoutingModule } from './courses-routing.module';
     CommonModule,
     MatButtonModule,
     MatTableModule,
-    MatFormFieldModule, // Add MatFormFieldModule to imports
-    MatInputModule, // Add MatInputModule to imports
-    FormsModule, // Add FormsModule to imports
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
     SharedModule,
     MatIcon,
     CoursesRoutingModule

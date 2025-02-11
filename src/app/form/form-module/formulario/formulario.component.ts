@@ -55,16 +55,16 @@ export class FormularioComponent {
       const student: Student = this.studentsForm.value;
 
       if (this.student) {
-        // Si es un estudiante existente, actualiza sus datos
+
         this.studentCreated.emit({ ...this.student, ...student });
       } else {
-        // Si es un nuevo estudiante, genera un ID y emite el evento
+
         student.id = generateRandomString(4);
         this.studentCreated.emit(student);
         console.log(student);
       }
 
-      // Limpia el formulario y restablece el estado de los controles
+
       this.studentsForm.reset({
         name: null,
         lastname: null,
@@ -74,8 +74,8 @@ export class FormularioComponent {
     }
     Object.keys(this.studentsForm.controls).forEach(field => {
       const control = this.studentsForm.get(field);
-      control?.markAsUntouched(); // Marca el control como no tocado
-      control?.setErrors(null); // Elimina los errores del control
+      control?.markAsUntouched();
+      control?.setErrors(null);
     });
   }
 

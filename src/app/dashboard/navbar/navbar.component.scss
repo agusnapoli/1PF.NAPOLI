@@ -1,33 +1,33 @@
 .example-sidenav {
   background-color: #846b6bd5;
-  display: inline; /* Change display to inline to cover the full left side of the screen */
+  display: inline;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Set height to cover the full viewport */
+  height: 100vh;
   border-radius: 0;
 }
 
 mat-drawer {
-  width: 250px;  // Ancho del menú
-  background: #f4f4f4;  // Color de fondo
+  width: 250px;
+  background: #f4f4f4;
 }
 .mat-drawer-inner-container {
-  overflow: hidden !important; // Evita el scroll
-  height: 100vh; // Ocupar toda la pantalla
+  overflow: hidden !important;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 mat-drawer-container {
-  height: 100vh;  // Ocupar toda la pantalla
+  height: 100vh;
   display: inline;
 }
 
 .button-container {
   display: flex;
-  flex-direction: column; /* Pone los botones uno debajo del otro */
-  justify-content: center; /* Centra los botones en el medio */
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 100%; /* Asegura que el contenedor ocupe toda la altura disponible */
-  gap: 10px; /* Añade una pequeña distancia entre los botones */
+  height: 100%;
+  gap: 10px;
 }

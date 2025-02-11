@@ -1,15 +1,12 @@
 <div  class="centered-container with-background">
-  <!-- Botón para crear estudiante -->
   <button mat-raised-button >Crear estudiante</button>
 
-  <!-- Formulario de estudiante, se muestra solo cuando showForm es verdadero -->
   <app-formulario
     [student]="selectedStudent"
     (studentCreated)="addStudent($event)"
     *ngIf="showForm">
   </app-formulario>
 
-  <!-- Tabla de estudiantes, siempre visible -->
   <table mat-table [dataSource]="students">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>

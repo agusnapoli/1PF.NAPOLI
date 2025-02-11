@@ -4,7 +4,7 @@
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 840px; /* Ajustado para ser similar a los cursos */
+  max-width: 840px;
   margin: 20px auto;
   padding: 20px;
 }
@@ -28,17 +28,17 @@ button {
 
 table {
   width: 100%;
-  max-width: 560px; /* 30% menos que 800px, como en cursos */
+  max-width: 560px;
   background-color: #846b6bd5;
   margin-top: 20px;
   border-radius: 8px;
   overflow: hidden;
-  align-self: center; /* Alineación centrada */
+  align-self: center;
 }
 
 mat-form-field {
   width: 100%;
-  max-width: 420px; /* 30% menos que 600px, como en cursos */
+  max-width: 420px;
   background-color: #846b6bd5;
   border-radius: 5px;
   padding: 10px;
@@ -48,14 +48,14 @@ mat-form-field {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Espacio entre los campos */
+  gap: 10px;
   width: 100%;
-  max-width: 420px; /* 30% menos que 600px */
+  max-width: 420px;
 }
 
 .form-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Espacio entre los botones */
+  gap: 15px;
   margin-top: 20px;
 }

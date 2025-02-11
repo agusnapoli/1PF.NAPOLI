@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoursesComponent } from './courses.component';
 
 const routes: Routes = [
-  { path: '', component: CoursesComponent },  // Ruta por defecto cuando se navega a 'courses'
+  { path: '', component: CoursesComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],  // Usa 'forChild' ya que este es un módulo cargado perezosamente
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class CoursesRoutingModule {}

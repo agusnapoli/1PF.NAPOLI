@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClasesComponent } from './clases.component';  // Importa el componente que quieres mostrar
+import { ClasesComponent } from './clases.component';
 
 const routes: Routes = [
-  { path: '', component: ClasesComponent },  // Ruta por defecto cuando se navega a 'clases'
+  { path: '', component: ClasesComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],  // Usa 'forChild' ya que este es un módulo cargado perezosamente
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ClasesRoutingModule {}
