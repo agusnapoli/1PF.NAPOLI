@@ -1,4 +1,3 @@
-<!-- Formulario separado -->
 <div *ngIf="showForm" class="centered-container with-background">
   <form (ngSubmit)="saveClase(selectedClase)" #claseForm="ngForm" class="form-container">
     <mat-form-field>
@@ -6,23 +5,24 @@
       <input matInput required name="name" [(ngModel)]="selectedClase.name" placeholder="Ingrese el nombre de la clase">
     </mat-form-field>
 
-
-
     <!-- Contenedor para los botones -->
     <div class="form-buttons">
-      <button mat-raised-button type="submit" color="primary">Agregar</button>
+      <!-- Deshabilitar el botón si el formulario no es válido -->
+      <button mat-raised-button type="submit" color="primary" [disabled]="!claseForm.valid">Agregar</button>
       <button mat-raised-button type="button" (click)="toggleForm()">Cancelar</button>
     </div>
   </form>
-</div>
+
 
 <!-- Contenedor con la tabla -->
-<div *ngIf="clases.length > 0" class="centered-container with-background">
+<div class="centered-container with-background">
+
   <!-- Botón para agregar una clase -->
   <button mat-raised-button *ngIf="!showForm" (click)="toggleForm()">Agregar clase</button>
 
   <!-- Tabla de clases -->
   <table mat-table [dataSource]="clases" class="mat-elevation-z8">
+
     <!-- Nombre de la clase -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Clase </th>

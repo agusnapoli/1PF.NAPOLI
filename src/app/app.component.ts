@@ -10,15 +10,27 @@ export class AppComponent {
   title = '1PFNAPOLI';
   showStudents: boolean = false;  // Esta variable controla si el componente Students se muestra
   showCourses: boolean = false; // Esta variable controla si el componente Courses se muestra
+  showClases: boolean = false; // Esta variable controla si el componente Clases se muestra
 
   toggleStudents() {
     this.showStudents = !this.showStudents;
     this.showCourses = false; // Desactivar la vista de cursos cuando se muestran estudiantes
+    this.showClases = false; // Desactivar la vista de clases cuando se muestran estudiantes
   }
 
   // Método para alternar la visibilidad de cursos
   toggleCourses() {
     this.showCourses = !this.showCourses;
     this.showStudents = false; // Desactivar la vista de estudiantes cuando se muestran cursos
+    this.showClases = false; // Desactivar la vista de clases cuando se muestran cursos
   }
+
+  // Método para alternar la visibilidad de clases
+  toggleClases() {
+    this.showClases = !this.showClases;
+    this.showStudents = false; // Desactivar la vista de estudiantes cuando se muestran clases
+    this.showCourses = false; // Desactivar la vista de cursos cuando se muestran clases
+  }
+
+
 }
