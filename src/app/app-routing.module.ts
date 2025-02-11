@@ -1,18 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClasesComponent } from './pages/clases/clases.component';
-import { StudentsComponent } from './pages/students/students.component';
-import { CoursesComponent } from './pages/courses/courses.component';
 
+// Configuración de rutas
 const routes: Routes = [
-  { path: 'clases', component: ClasesComponent },
-  { path: 'students', component: StudentsComponent },
-  { path: 'courses', component: CoursesComponent },
-  { path: '', redirectTo: '/courses', pathMatch: 'full' } // Redirección a cursos por defecto
+  {
+    path: 'clases',
+    loadChildren: () => import('./pages/clases/clases.module').then(m => m.ClasesModule)  // Lazy Loading para Clases
+  },
+  {
+    path: 'students',
+    loadChildren: () => import('./pages/students/students.module').then(m => m.StudentsModule)  // Lazy Loading para Students
+  },
+  {
+    path: 'courses',
+    loadChildren: () => import('./pages/courses/courses.module').then(m => m.CoursesModule)  // Lazy Loading para Courses
+  },
+  {
+    path: '',
+    redirectTo: '/courses',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

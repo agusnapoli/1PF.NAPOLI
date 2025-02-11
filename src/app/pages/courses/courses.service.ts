@@ -6,31 +6,17 @@ import { Course } from '../../shared/models/courses.model';
   providedIn: 'root'
 })
 export class CoursesService {
-  private courses: Course[] = [
-    { id: '1', name: 'Course 1', description: 'Description for Course 1' },
-    { id: '2', name: 'Course 2', description: 'Description for Course 2' },
-    { id: '3', name: 'Course 3', description: 'Description for Course 3' }
-
-  ];
 
   constructor() { }
 
   getCourses(): Observable<Course[]> {
-    return of(this.courses);
-  }
+    const courses: Course[] = [
+      { id: '1', name: 'Course 1', description: 'Description for Course 1' },
+      { id: '2', name: 'Course 2', description: 'Description for Course 2' },
+      { id: '3', name: 'Course 3', description: 'Description for Course 3' }
 
-  addCourse(course: Course): void {
-    this.courses.push(course);
-  }
-
-  updateCourse(updatedCourse: Course): void {
-    const index = this.courses.findIndex(course => course.id === updatedCourse.id);
-    if (index !== -1) {
-      this.courses[index] = updatedCourse;
+    ];
+      return of(courses);
     }
-  }
 
-  deleteCourse(courseId: string): void {
-    this.courses = this.courses.filter(course => course.id !== courseId);
-  }
 }

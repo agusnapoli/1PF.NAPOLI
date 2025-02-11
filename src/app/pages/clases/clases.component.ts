@@ -4,9 +4,9 @@ import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-clases',
-  templateUrl: './clases.component.html',
-  styleUrls: ['./clases.component.scss'],
   standalone: false,
+  templateUrl: './clases.component.html',
+  styleUrls: ['./clases.component.scss']
 })
 export class ClasesComponent implements OnInit {
   clases: Clase[] = []; // Lista de clases

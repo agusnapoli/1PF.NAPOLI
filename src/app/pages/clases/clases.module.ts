@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon'; // Importar MatIconModul
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field'; // Importar MatFormFieldModule
 import { MatInputModule } from '@angular/material/input'; // Importar MatInputModule
+import { ClasesRoutingModule } from './clases-routing.module';
 
 @NgModule({
   declarations: [ClasesComponent], // Declarar el componente aquí
@@ -17,7 +18,8 @@ import { MatInputModule } from '@angular/material/input'; // Importar MatInputMo
     MatIconModule, // Agregar MatIconModule a las importaciones
     FormsModule,
     MatFormFieldModule, // Agregar MatFormFieldModule a las importaciones
-    MatInputModule // Agregar MatInputModule a las importaciones
+    MatInputModule,
+    ClasesRoutingModule// Agregar MatInputModule a las importaciones
   ],
   exports: [ClasesComponent] // Exportar el componente
 })

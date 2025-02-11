@@ -1,14 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesModule } from './pages/courses/courses.module'; // Import CoursesModule
+import { AppRoutingModule } from './app-routing.module';  // Mantén el enrutamiento
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { ModulesModule } from './dashboard/modules/modules.module';
-import { StudentsModule } from './pages/students/students.module';
-
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { ClasesModule } from "./pages/clases/clases.module";
 
 @NgModule({
   declarations: [
@@ -16,16 +11,10 @@ import { ClasesModule } from "./pages/clases/clases.module";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ModulesModule,
-    StudentsModule,
-    CoursesModule // Se mantiene en imports
-    ,
-    ClasesModule
-],
-  providers: [
-    provideAnimationsAsync()
+    AppRoutingModule ,
+    ModulesModule // Importa el módulo de enrutamiento
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

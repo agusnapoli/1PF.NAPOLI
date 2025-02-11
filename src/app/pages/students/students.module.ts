@@ -8,6 +8,7 @@ import { FormModuleModule } from '../../form/form-module/form-module.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
 import { SharedModule } from '../../shared/shared.module';
+import { StudentsRoutingModule } from './students-routing.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SharedModule } from '../../shared/shared.module';
     MatTableModule,
     MatIcon,
     FormModuleModule,
-    SharedModule
+    SharedModule,
+    StudentsRoutingModule
 
   ],
   exports : [

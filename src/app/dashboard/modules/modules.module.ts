@@ -8,6 +8,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { StudentsModule } from '../../pages/students/students.module';
 import { SharedModule } from '../../shared/shared.module';
+import { CoursesModule } from '../../pages/courses/courses.module';
+import { ClasesModule } from '../../pages/clases/clases.module';
 
 
 @NgModule({
@@ -21,7 +23,6 @@ import { SharedModule } from '../../shared/shared.module';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    StudentsModule,
     SharedModule
   ],
   exports: [

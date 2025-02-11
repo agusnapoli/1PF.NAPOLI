@@ -9,10 +9,11 @@ import { MatInputModule } from '@angular/material/input'; // Import MatInputModu
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { MatIcon } from '@angular/material/icon';
+import { CoursesRoutingModule } from './courses-routing.module';
 
 @NgModule({
   declarations: [
-    CoursesComponent,
+    CoursesComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import { MatIcon } from '@angular/material/icon';
     MatInputModule, // Add MatInputModule to imports
     FormsModule, // Add FormsModule to imports
     SharedModule,
-    MatIcon
+    MatIcon,
+    CoursesRoutingModule
   ],
   exports: [
     CoursesComponent
