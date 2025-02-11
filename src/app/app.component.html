@@ -1,8 +1,7 @@
 <app-navbar (toggleStudents)="toggleStudents()" (toggleCourses)="toggleCourses()" (toggleClases)="toggleClases()"></app-navbar>
 
 <main>
-  <app-courses *ngIf="showCourses" [showCourses]="showCourses"></app-courses>
-  <app-students *ngIf="showStudents" [showStudents]="showStudents"></app-students>
-  <app-clases *ngIf="showClases" [showClases]="showClases"></app-clases>
-  <router-outlet></router-outlet>
+  <!-- Mostrar el componente de clases a través de rutas -->
+<router-outlet></router-outlet>
+
 </main>

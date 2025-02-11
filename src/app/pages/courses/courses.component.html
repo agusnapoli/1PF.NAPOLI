@@ -1,5 +1,5 @@
 <!-- Formulario separado -->
-<div *ngIf="showForm" class="centered-container with-background">
+<div class="centered-container with-background">
   <form (ngSubmit)="addCourse(courseForm.value)" #courseForm="ngForm" class="form-container">
     <mat-form-field>
       <mat-label>Curso</mat-label>
@@ -14,15 +14,15 @@
     <!-- Contenedor para los botones -->
     <div class="form-buttons">
       <button mat-raised-button type="submit" color="primary">Agregar</button>
-      <button mat-raised-button type="button" (click)="toggleForm()">Cancelar</button>
+      <button mat-raised-button type="button" >Cancelar</button>
     </div>
   </form>
 </div>
 
 <!-- Contenedor con la tabla -->
-<div *ngIf="showCourses" class="centered-container with-background">
+<div class="centered-container with-background">
   <!-- Botón para agregar un curso -->
-  <button mat-raised-button *ngIf="!showForm" (click)="toggleForm()">Agregar curso</button>
+  <button mat-raised-button  (click)="toggleForm()">Agregar curso</button>
 
   <!-- Tabla de cursos -->
   <table mat-table [dataSource]="courses" class="mat-elevation-z8">

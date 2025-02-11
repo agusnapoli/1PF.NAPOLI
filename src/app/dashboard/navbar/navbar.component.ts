@@ -1,35 +1,24 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router'; // Importar Router
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  standalone: false,
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  standalone: false,
 })
 export class NavbarComponent {
-  showFiller = false;
+  constructor(private router: Router) { }
 
-  @Output() toggleStudents = new EventEmitter<void>();  // Evento que emite el cambio de estado
-  @Output() toggleCourses = new EventEmitter<void>();  // Evento para alternar cursos
-  @Output() toggleClases = new EventEmitter<void>();  // Evento para alternar clases
-
-  constructor(private router: Router) {} // Inyectar Router
-
-  onToggleStudents() {
-    this.toggleStudents.emit();
+  goToClases(): void {
+    this.router.navigate(['/clases']);
   }
 
-  onToggleCourses() {
-    this.toggleCourses.emit();
-  }
-  onToggleClases() {
-    this.toggleClases.emit();
-
+  goToStudents(): void {
+    this.router.navigate(['/students']);
   }
 
-
-  navigateToClases() {
-    this.toggleClases.emit(); // Emitir evento para alternar la visibilidad del componente Clases
+  goToCourses(): void {
+    this.router.navigate(['/courses']);
   }
 }

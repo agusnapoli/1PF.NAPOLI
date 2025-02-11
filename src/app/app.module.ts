@@ -12,7 +12,7 @@ import { ClasesModule } from "./pages/clases/clases.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
