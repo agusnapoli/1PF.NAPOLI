@@ -1,5 +1,5 @@
-<div *ngIf="showForm" class="centered-container with-background">
-  <form (ngSubmit)="saveClase(selectedClase)" #claseForm="ngForm" class="form-container">
+<div *ngIf="showClases" class="centered-container with-background">
+  <form *ngIf="showForm" (ngSubmit)="saveClase(selectedClase)" #claseForm="ngForm" class="form-container">
     <mat-form-field>
       <mat-label>Nombre de la Clase</mat-label>
       <input matInput required name="name" [(ngModel)]="selectedClase.name" placeholder="Ingrese el nombre de la clase">
@@ -15,7 +15,7 @@
 
 
 <!-- Contenedor con la tabla -->
-<div class="centered-container with-background">
+<div *ngIf="showClases"  class="centered-container with-background">
 
   <!-- Botón para agregar una clase -->
   <button mat-raised-button *ngIf="!showForm" (click)="toggleForm()">Agregar clase</button>

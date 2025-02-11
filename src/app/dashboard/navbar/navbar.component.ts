@@ -25,6 +25,7 @@ export class NavbarComponent {
   }
   onToggleClases() {
     this.toggleClases.emit();
+
   }
 
 
