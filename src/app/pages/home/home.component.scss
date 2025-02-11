@@ -1,0 +1,18 @@
+
+.welcome-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 3rem;
+  text-align: center;
+  width: 100%;
+  background-color: #8a7a7ad5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #766464d5;
+  font-weight: bold;
+}
