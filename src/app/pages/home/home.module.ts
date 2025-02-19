@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { RouterModule } from '@angular/router';
+import { HomeRoutingModule } from './home-routing.module';
+
 import { MatCardModule } from '@angular/material/card'; // Importar MatCardModule
 
 @NgModule({
@@ -10,11 +11,9 @@ import { MatCardModule } from '@angular/material/card'; // Importar MatCardModul
   ],
   imports: [
     CommonModule,
-    MatCardModule,
-    RouterModule.forChild([  // Esta es la clave
-      { path: '', component: HomeComponent }
-    ]),
+    HomeRoutingModule
   ],
+
   exports : [
     HomeComponent
   ]

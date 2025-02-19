@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ClasesRoutingModule } from './clases-routing.module';
+import { ClaseDetailComponent } from './clase-detail/clase-detail.component';
 
 @NgModule({
-  declarations: [ClasesComponent],
+  declarations: [ClasesComponent, ClaseDetailComponent],
   imports: [
     CommonModule,
     MatButtonModule,
