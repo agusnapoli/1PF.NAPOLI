@@ -7,6 +7,7 @@ import { ModulesModule } from './dashboard/modules/modules.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './pages/users/users.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +16,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule ,
     ModulesModule,
-    AuthModule
+    AuthModule,
+    UsersModule
   ],
   providers: [
     provideAnimationsAsync()

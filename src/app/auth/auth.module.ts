@@ -23,6 +23,9 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatButtonModule,
     RouterModule
+  ],
+  exports: [
+    AuthComponent
   ]
 })
 export class AuthModule { }
