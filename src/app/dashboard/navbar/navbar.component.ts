@@ -21,4 +21,8 @@ export class NavbarComponent {
   goToCourses(): void {
     this.router.navigate(['/courses']);
   }
+
+  goToAuth(): void {
+    this.router.navigate(['/auth']);
+  }
 }

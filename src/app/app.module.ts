@@ -6,6 +6,7 @@ import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { ModulesModule } from './dashboard/modules/modules.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,7 +14,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   imports: [
     BrowserModule,
     AppRoutingModule ,
-    ModulesModule
+    ModulesModule,
+    AuthModule
   ],
   providers: [
     provideAnimationsAsync()
