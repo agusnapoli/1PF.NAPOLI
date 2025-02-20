@@ -8,7 +8,7 @@ import { Student } from '../models/students.model';
 export class NameAndLastnamePipe implements PipeTransform {
 
   transform(value: Student, ...args: unknown[]): unknown {
-    return `${value.lastname}, ${value.name}`;
+    return `${value.lastName}, ${value.firstName}`;
   }
 
 }

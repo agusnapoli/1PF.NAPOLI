@@ -10,10 +10,16 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { CoursesRoutingModule } from './courses-routing.module';
+import { CoursesDetailsComponent } from './pages/courses-details/courses-details.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // MatSpinner
+import { MatListModule } from '@angular/material/list'; // MatList
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
-    CoursesComponent
+    CoursesComponent,
+    CoursesDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -24,10 +30,16 @@ import { CoursesRoutingModule } from './courses-routing.module';
     FormsModule,
     SharedModule,
     MatIcon,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    HttpClientModule,
+    MatCardModule
+
   ],
   exports: [
-    CoursesComponent
+    CoursesComponent,
+    CoursesDetailsComponent
   ]
 })
 export class CoursesModule { }

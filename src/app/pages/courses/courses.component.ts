@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Course } from '../../shared/models/courses.model';
 import { CoursesService } from '../../core/courses.service';
+import { AuthService } from '../../core/auth.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
@@ -15,7 +18,12 @@ export class CoursesComponent implements OnInit {
   editingCourseId: string | null = null;
   selectedCourse: Course = { id: '', name: '', description: '' };
 
-  constructor(private coursesService: CoursesService) {}
+  isAdmin$: Observable<boolean> | undefined;
+
+  constructor(private coursesService: CoursesService, private authService: AuthService) {
+    this.isAdmin$ = this.authService.getAuthUser().pipe(map((x)=> x?.role === 'admin'));
+
+  }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -33,22 +41,46 @@ export class CoursesComponent implements OnInit {
 
   addCourse(course: Course): void {
     if (this.selectedCourse.id) {
-      this.courses = this.courses.map(c =>
-        c.id === this.selectedCourse.id ? { ...c, ...course } : c
-      );
+      // Update existing course
+      this.coursesService.updateCourse(this.selectedCourse.id, course)
+        .subscribe(updatedCourse => {
+          this.courses = this.courses.map(c =>
+            c.id === updatedCourse.id ? updatedCourse : c
+          );
+        });
     } else {
-      this.courses = [...this.courses, course];
+      // Create new course
+      this.coursesService.createCourse(course)
+        .subscribe(newCourse => {
+          this.courses = [...this.courses, newCourse];
+        });
     }
 
     this.selectedCourse = { id: '', name: '', description: '' };
-    console.log(this.courses);
+    this.showForm = false;
   }
+
 
   displayedColumns: string[] = ['name', 'description', 'actions'];
 
   deleteCourse(course: Course): void {
-    this.courses = this.courses.filter(c => c !== course);
+    if (!course.id) {
+      console.error('Cannot delete course: ID is undefined');
+      return;
+    }
+
+    this.coursesService.deleteCourse(course.id)
+      .subscribe({
+        next: () => {
+          this.courses = this.courses.filter(c => c.id !== course.id);
+        },
+        error: (err) => {
+          console.error('Error deleting course:', err);
+        }
+      });
   }
+
+
 
   editCourse(course: Course): void {
     this.selectedCourse = course;

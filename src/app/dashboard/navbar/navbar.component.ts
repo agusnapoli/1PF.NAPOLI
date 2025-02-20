@@ -7,9 +7,13 @@ import { AuthService } from '../../core/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   standalone: false,
+
 })
 export class NavbarComponent {
-  constructor(private router: Router, private authService : AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   goToClases(): void {
     this.router.navigate(['/clases']);
@@ -27,12 +31,16 @@ export class NavbarComponent {
     this.router.navigate(['/auth']);
   }
 
-  goToUsers (): void {
-    this.router.navigate(['/users']);
+  goToUsers(): void {
+    if (this.authService.isEmployee()) {
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/users']);
+    }
   }
 
-  logout (): void {
 
+  logout(): void {
     this.authService.logout();
   }
 }

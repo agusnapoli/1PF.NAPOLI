@@ -7,8 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { ClasesRoutingModule } from './clases-routing.module';
 import { ClaseDetailComponent } from './clase-detail/clase-detail.component';
+import { Clase } from '../../shared/models/clase.model';
+
 
 @NgModule({
   declarations: [ClasesComponent, ClaseDetailComponent],
@@ -20,8 +23,10 @@ import { ClaseDetailComponent } from './clase-detail/clase-detail.component';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     ClasesRoutingModule
+
   ],
-  exports: [ClasesComponent]
+  exports: [ClasesComponent, ClaseDetailComponent]
 })
 export class ClasesModule { }

@@ -1,0 +1,66 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "Matemáticas",
+      "description": "Curso introductorio de matemáticas"
+    },
+    {
+      "id": "2",
+      "name": "Historia",
+      "description": "Historia universal"
+    }
+  ],
+  "classes": [
+    {
+      "id": "vb3comz5y",
+      "name": "AAAAAAAAAAAAAAAAAA",
+      "description": "AS"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "token": "admin-token-123",
+      "role": "admin"
+    },
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "employe@example.com",
+      "password": "employe123",
+      "token": "admin-token-123",
+      "role": "employee"
+    }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Juan",
+      "lastName": "Pérez",
+      "email": "juan@example.com",
+      "courses": [
+        "1"
+      ],
+      "age": "22s",
+      "course": null
+    },
+    {
+      "id": "2Han",
+      "firstName": null,
+      "lastName": null,
+      "age": "2",
+      "course": "2"
+    },
+    {
+      "id": "p0C7",
+      "firstName": "bbbbbbbbbbbb",
+      "lastName": "a",
+      "age": "222222222",
+      "course": "a"
+    }
+  ]
+}

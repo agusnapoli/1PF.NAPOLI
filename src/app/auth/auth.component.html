@@ -1,67 +1,27 @@
-<div
-  class="flex justify-content-center align-items-center"
-  style="background-color: cadetblue; height: 100vh; width: 100%"
->
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title> Iniciar sesión </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form
-        (ngSubmit)="onSubmit()"
-        autocomplete="off"
-        [formGroup]="loginForm"
-        class="mt-3"
-      >
-        <div class="grid formgrid">
-          <div class="col-12">
-            <mat-form-field class="w-full">
-              <mat-label>Email</mat-label>
-              <input
-                autocomplete="off"
-                formControlName="email"
-                matInput
-                [ngClass]="{
-                  'p-invalid': loginForm.get('email')?.touched && loginForm.get('email')?.invalid
-                }"
-              />
-              <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
-                <div *ngIf="loginForm.get('email')?.hasError('required')">El correo electrónico es requerido.</div>
-                <div *ngIf="loginForm.get('email')?.hasError('email')">El correo electrónico no es válido.</div>
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-12">
-            <mat-form-field class="w-full">
-              <mat-label>Contraseña</mat-label>
-              <input
-                autocomplete="off"
-                type="password"
-                formControlName="password"
-                matInput
-                [ngClass]="{
-                  'p-invalid': loginForm.get('password')?.touched && loginForm.get('password')?.invalid
-                }"
-              />
-              <mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
-                <div *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es requerida.</div>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="flex justify-content-end">
-            <button
-              type="submit"
+<div class="login-container">
+  <h2>Iniciar Sesión</h2>
 
-              mat-button
-              [disabled]="loginForm.invalid"
-            >
-              Iniciar sesión
-            </button>
-          </div>
-        </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" placeholder="Ingresa tu email">
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+        Por favor ingresa un email válido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" formControlName="password" placeholder="Ingresa tu contraseña">
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+        La contraseña es requerida
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+  </form>
 </div>

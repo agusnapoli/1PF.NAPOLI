@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Student } from '../shared/models/students.model';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentsService {
-
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   getStudents(): Observable<Student[]> {
-    const mockStudents: Student[] = [
-      { id: '1', name: 'Juan', lastname: 'Pérez', age: 20, course: 'Matemáticas' },
-      { id: '2', name: 'Ana', lastname: 'Gómez', age: 22, course: 'Física' },
-      { id: '3', name: 'Luis', lastname: 'Rodríguez', age: 21, course: 'Química' }
+    return this.apiService.get<Student[]>('students');
+  }
 
-    ];
-    return of(mockStudents);
+  getStudentById(id: string): Observable<Student> {
+    return this.apiService.get<Student>(`students/${id}`);
+  }
+
+  createStudent(student: Student): Observable<Student> {
+    return this.apiService.post<Student>('students', student);
+  }
+
+  updateStudent(id: string, student: Student): Observable<Student> {
+    return this.apiService.put<Student>('students', id, student);
+  }
+
+  deleteStudent(id: string): Observable<void> {
+    return this.apiService.delete<void>('students', id);
   }
 }

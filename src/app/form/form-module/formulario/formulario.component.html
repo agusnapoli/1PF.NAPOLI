@@ -6,16 +6,18 @@
       <div class="col-6">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Nombre</mat-label>
-          <input formControlName="name" matInput (blur)="markAsTouched('name')">
-          <mat-error *ngIf="isFieldRequired('name')">El nombre es requerido</mat-error>
+          <input formControlName="firstName" matInput (blur)="markAsTouched('firstName')">
+          <mat-error *ngIf="isFieldRequired('firstName')">El nombre es requerido</mat-error>
+
         </mat-form-field>
       </div>
 
       <div class="col-6">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Apellido</mat-label>
-          <input formControlName="lastname" matInput (blur)="markAsTouched('lastname')">
-          <mat-error *ngIf="isFieldRequired('lastname')">El apellido es requerido</mat-error>
+          <input formControlName="lastName" matInput (blur)="markAsTouched('lastName')">
+          <mat-error *ngIf="isFieldRequired('lastName')">El apellido es requerido</mat-error>
+
         </mat-form-field>
       </div>
 
@@ -38,5 +40,7 @@
     </div>
 
     <button mat-raised-button type="submit">Guardar</button>
+    <button mat-raised-button type="button" (click)="cancelEdit.emit()" style="margin-left: 8px;">Cancelar</button>
+
   </form>
 </div>

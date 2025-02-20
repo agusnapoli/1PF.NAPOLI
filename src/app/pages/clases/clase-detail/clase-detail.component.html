@@ -1,1 +1,13 @@
-<p>clase-detail works!</p>
+<div class="clase-detail-container">
+  <mat-card *ngIf="clase">
+    <mat-card-header>
+      <mat-card-title>{{ clase.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ clase.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" routerLink="/clases">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

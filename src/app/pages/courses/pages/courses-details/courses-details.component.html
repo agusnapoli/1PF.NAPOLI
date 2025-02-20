@@ -1,0 +1,19 @@
+<div class="centered-container with-background">
+  <ng-container *ngIf="isLoading; else content">
+    <mat-spinner></mat-spinner>
+  </ng-container>
+
+  <ng-template #content>
+    <ng-container *ngIf="errorMessage; else courseDetails">
+      <p>{{ errorMessage }}</p>
+    </ng-container>
+
+    <ng-template #courseDetails>
+      <h2>{{ course?.name }}</h2>
+      <p>{{ course?.description }}</p>
+    </ng-template>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" routerLink="/courses">Volver</button>
+    </mat-card-actions>
+  </ng-template>
+</div>

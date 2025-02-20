@@ -1,22 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Course } from '../shared/models/courses.model';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
+  constructor(private apiService: ApiService) { }
 
-  constructor() { }
 
   getCourses(): Observable<Course[]> {
-    const courses: Course[] = [
-      { id: '1', name: 'Curso 1', description: 'Descripcion curso 1' },
-      { id: '2', name: 'Curso 2', description: 'Descripcion curso 2' },
-      { id: '3', name: 'Curso 3', description: 'Descripcion curso 3' }
+    return this.apiService.get<Course[]>('courses');
+  }
 
-    ];
-      return of(courses);
-    }
+  getCourseDetail(id: string): Observable<Course> {
+    return this.apiService.get<Course>(`courses/${id}`);
+  }
+
+  createCourse(course: Course): Observable<Course> {
+    return this.apiService.post<Course>('courses', course);
+  }
+
+  updateCourse(id: string, course: Course): Observable<Course> {
+    return this.apiService.put<Course>('courses', id, course);
+  }
+
+
+  deleteCourse(id: string): Observable<void> {
+    return this.apiService.delete<void>('courses', id);
+  }
+
 
 }

@@ -1,11 +1,14 @@
 <div  class="centered-container with-background">
-  <button mat-raised-button >Crear estudiante</button>
+  <button mat-raised-button (click)="toggleForm()">Crear estudiante</button>
+
 
   <app-formulario
     [student]="selectedStudent"
     (studentCreated)="addStudent($event)"
+    (cancelEdit)="cancelEdit()"
     *ngIf="showForm">
   </app-formulario>
+
 
   <table mat-table [dataSource]="students">
     <ng-container matColumnDef="name">

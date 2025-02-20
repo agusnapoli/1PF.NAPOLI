@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
@@ -8,13 +10,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './pages/users/users.module';
+
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule ,
+    HttpClientModule,
+    AppRoutingModule,
     ModulesModule,
     AuthModule,
     UsersModule

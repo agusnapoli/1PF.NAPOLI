@@ -6,31 +6,29 @@
   background-color: #8a7a7ad5;
 }
 
-.clase-detail-container {
+.centered-container {
   width: 100%;
   max-width: 800px;
   padding: 2rem;
 }
 
-mat-card {
+.with-background {
   background-color: #846b6bd5;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-mat-card-title {
+h2 {
   color: #000000;
   margin-bottom: 1.5rem;
 }
 
 p {
-  color: #333;
+  color: #242222;
   line-height: 1.6;
 }
 
-mat-card-actions {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: flex-end;
+mat-spinner {
+  margin: 0 auto;
 }

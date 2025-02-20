@@ -23,37 +23,61 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-
   toggleForm(): void {
     this.showForm = !this.showForm;
   }
 
-
   addStudent(student: Student) {
     if (this.selectedStudent) {
-
-      this.students = this.students.map(s =>
-        s === this.selectedStudent ? { ...s, ...student } : s
-      );
+      this.studentsService.updateStudent(this.selectedStudent.id!, student)
+        .subscribe({
+          next: (updatedStudent) => {
+            this.students = this.students.map(s =>
+              s.id === updatedStudent.id ? updatedStudent : s
+            );
+            this.cancelEdit();
+          },
+          error: (err) => {
+            console.error('Error updating student:', err);
+          }
+        });
     } else {
-
-      this.students = [...this.students, student];
+      this.studentsService.createStudent(student)
+        .subscribe({
+          next: (newStudent) => {
+            this.students = [...this.students, newStudent];
+            this.cancelEdit();
+          },
+          error: (err) => {
+            console.error('Error creating student:', err);
+          }
+        });
     }
-
-
-    this.selectedStudent = null;
-
-    console.log(this.students);
   }
 
   displayedColumns: string[] = ['name', 'age', 'course', 'acciones'];
 
   deleteStudent(student: Student) {
-    this.students = this.students.filter(s => s !== student);
+    if (student.id) {
+      this.studentsService.deleteStudent(student.id)
+        .subscribe({
+          next: () => {
+            this.students = this.students.filter(s => s.id !== student.id);
+          },
+          error: (err) => {
+            console.error('Error deleting student:', err);
+          }
+        });
+    }
   }
-
 
   editStudent(student: Student): void {
     this.selectedStudent = student;
+    this.showForm = true;
+  }
+
+  cancelEdit(): void {
+    this.selectedStudent = null;
+    this.showForm = false;
   }
 }

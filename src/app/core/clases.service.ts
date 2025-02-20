@@ -1,40 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Clase } from '../shared/models/clase.model';
+import { ApiService } from './api.service';
 
-export interface Clase {
-  id: string;
-  name: string;
-  description: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClasesService {
-  private clases: Clase[] = [
-    { id: '1', name: 'Matemáticas', description: 'Clase de matemáticas' },
-    { id: '2', name: 'Historia', description: 'Clase de historia' },
-    { id: '3', name: 'Ciencias', description: 'Clase de ciencias' }
-  ];
+  constructor(private apiService: ApiService) { }
 
-  constructor() { }
 
   getClases(): Observable<Clase[]> {
-    return of(this.clases);
+    return this.apiService.get<Clase[]>('classes');
   }
 
-  addClase(clase: Clase): void {
-    this.clases.push(clase);
+  getClaseById(claseId: string): Observable<Clase> {
+    return this.apiService.get<Clase>(`classes/${claseId}`);
   }
 
-  updateClase(updatedClase: Clase): void {
-    const index = this.clases.findIndex(clase => clase.id === updatedClase.id);
-    if (index !== -1) {
-      this.clases[index] = updatedClase;
-    }
+  createClase(clase: Clase): Observable<Clase> {
+    return this.apiService.post<Clase>('classes', clase);
   }
 
-  deleteClase(claseId: string): void {
-    this.clases = this.clases.filter(clase => clase.id !== claseId);
+  updateClase(id: string, clase: Clase): Observable<Clase> {
+    return this.apiService.put<Clase>('classes', id, clase);
   }
+
+  deleteClase(id: string): Observable<void> {
+    return this.apiService.delete<void>('classes', id);
+  }
+
 }

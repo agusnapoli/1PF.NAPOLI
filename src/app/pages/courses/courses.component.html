@@ -1,5 +1,5 @@
 <!-- Formulario separado -->
-<div class="centered-container with-background">
+<div *ngIf="isAdmin$ | async" class="centered-container with-background">
   <form (ngSubmit)="addCourse(courseForm.value)" #courseForm="ngForm" class="form-container">
     <mat-form-field>
       <mat-label>Curso</mat-label>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="centered-container with-background">
-  <button mat-raised-button  (click)="toggleForm()">Agregar curso</button>
+  <button *ngIf="isAdmin$ | async" mat-raised-button  (click)="toggleForm()">Agregar curso</button>
 
   <table mat-table [dataSource]="courses" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
@@ -36,11 +36,14 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let course">
-        <button mat-icon-button (click)="editCourse(course)">
+        <button *ngIf="isAdmin$ | async" mat-icon-button (click)="editCourse(course)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="deleteCourse(course)">
+        <button *ngIf="isAdmin$ | async" mat-icon-button color="warn" (click)="deleteCourse(course)">
           <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['/courses', course.id]">
+          <mat-icon>visibility</mat-icon>
         </button>
       </td>
     </ng-container>
