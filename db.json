@@ -1,21 +1,63 @@
 {
   "courses": [
     {
-      "id": "1",
-      "name": "Matemáticas",
-      "description": "Curso introductorio de matemáticas"
+      "id": "101",
+      "name": "Programación",
+      "description": "Curso básico de desarrollo de software"
     },
     {
-      "id": "2",
-      "name": "Historia",
-      "description": "Historia universal"
+      "id": "102",
+      "name": "Física",
+      "description": "Conceptos fundamentales de la física"
+    },
+    {
+      "id": "203",
+      "name": "Economía",
+      "description": "Conceptos básicos sobre el sistema económico global"
     }
   ],
   "classes": [
     {
-      "id": "vb3comz5y",
-      "name": "AAAAAAAAAAAAAAAAAA",
-      "description": "AS"
+      "id": "xyz123",
+      "name": "Introducción a la Programación",
+      "description": "Clase inicial sobre lógica de programación"
+    },
+    {
+      "id": "cls002",
+      "name": "Análisis de Literatura",
+      "description": "Interpretación y estudio de obras literarias"
+    },
+    {
+      "id": "cls003",
+      "name": "Principios de Economía",
+      "description": "Fundamentos del mercado y la producción"
+    }
+  ],
+  "students": [
+    {
+      "id": "stu001",
+      "firstName": "Lucía",
+      "lastName": "Gómez",
+      "email": "lucia.gomez@example.com",
+      "courses": [
+        "101"
+      ],
+      "age": "20",
+      "course": null
+    },
+    {
+      "id": "stu002",
+      "firstName": "Martín",
+      "lastName": "Rodríguez",
+      "age": "25",
+      "course": "102"
+    },
+    {
+      "id": "stu003",
+      "firstName": "Ana",
+      "lastName": "Fernández",
+      "age": "19",
+      "course": "101"
     }
   ],
   "users": [
@@ -28,39 +70,12 @@
       "role": "admin"
     },
     {
-      "id": "1",
-      "name": "Admin",
+      "id": "2",
+      "name": "Empleado",
       "email": "employe@example.com",
       "password": "employe123",
-      "token": "admin-token-123",
+      "token": "employe-token-123",
       "role": "employee"
-    }
-  ],
-  "students": [
-    {
-      "id": "1",
-      "firstName": "Juan",
-      "lastName": "Pérez",
-      "email": "juan@example.com",
-      "courses": [
-        "1"
-      ],
-      "age": "22s",
-      "course": null
-    },
-    {
-      "id": "2Han",
-      "firstName": null,
-      "lastName": null,
-      "age": "2",
-      "course": "2"
-    },
-    {
-      "id": "p0C7",
-      "firstName": "bbbbbbbbbbbb",
-      "lastName": "a",
-      "age": "222222222",
-      "course": "a"
     }
   ]
 }
