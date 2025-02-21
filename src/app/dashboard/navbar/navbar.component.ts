@@ -31,13 +31,7 @@ export class NavbarComponent {
     this.router.navigate(['/auth']);
   }
 
-  goToUsers(): void {
-    if (this.authService.isEmployee()) {
-      this.router.navigate(['/home']);
-    } else {
-      this.router.navigate(['/users']);
-    }
-  }
+
 
 
   logout(): void {

@@ -48,7 +48,7 @@ export class AuthService {
       const token = localStorage.getItem('authToken');
 
       if (user && token && user.token === token) {
-        // Verificar que el usuario aún existe en la base de datos
+
         this.apiService.get<User[]>('users').subscribe(users => {
           const validUser = users.find(u => u.id === user.id);
           if (validUser) {

@@ -1,4 +1,4 @@
-<!-- Formulario separado -->
+
 <div *ngIf="isAdmin$ | async" class="centered-container with-background">
   <form (ngSubmit)="addCourse(courseForm.value)" #courseForm="ngForm" class="form-container">
     <mat-form-field>
@@ -11,7 +11,7 @@
       <input matInput required name="description" [(ngModel)]="selectedCourse.description">
     </mat-form-field>
 
-    <!-- Contenedor para los botones -->
+
     <div class="form-buttons">
       <button mat-raised-button type="submit" color="primary">Agregar</button>
       <button mat-raised-button type="button" >Cancelar</button>
