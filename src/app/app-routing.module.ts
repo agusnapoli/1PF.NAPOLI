@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 
 import { AdminGuard } from './core/guards/admin.guard';
+import { EnrollmentsModule } from './pages/enrollments/enrollments.module';
 
 
 const routes: Routes = [
@@ -31,7 +32,12 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
+  {
+    path: 'enrollments',
+    loadChildren: () => import('./pages/enrollments/enrollments.module').then(m=> m.EnrollmentsModule),
+    canActivate: [AuthGuard]
 
+  },
 
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
   {path: '**', redirectTo:'/home', pathMatch: 'full'}

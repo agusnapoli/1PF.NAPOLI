@@ -99,12 +99,16 @@
             ],
             "styles": [
               "src/styles.scss"
-
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }
