@@ -27,7 +27,12 @@ export class NavbarComponent {
     this.router.navigate(['/courses']);
   }
 
+  goToEnrollments(): void {
+    this.router.navigate(['/enrollments']);
+  }
+
   goToAuth(): void {
+
     this.router.navigate(['/auth']);
   }
 
