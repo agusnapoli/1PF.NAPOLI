@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/auth.service';
-import { AppStateService } from './core/app-state.service'; // Importar el servicio de estado
 import { Router, NavigationEnd } from '@angular/router';
+import { AppStateService } from './core/app-state.service'; // Importar el servicio de estado
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -16,19 +16,19 @@ export class AppComponent implements OnInit {
   showCourses: boolean = false;
   showClases: boolean = false;
 
-  constructor(private authService: AuthService, private appStateService: AppStateService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private appStateService: AppStateService) {}
 
   ngOnInit() {
     this.authService.initializeAuth();
 
-    // Establecer el título según la ruta
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      const currentRoute = this.router.routerState.snapshot.root;
-      const title = currentRoute.data['title'] || 'Administración'; // Obtener el título de la ruta
-      this.appStateService.setCurrentTitle(title); // Establecer el título en el estado
-    });
+    // Escuchar cambios de ruta y actualizar el título
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        const currentRoute = this.router.routerState.snapshot.root;
+        const title = currentRoute.firstChild?.data['title']  // Obtener el título de la ruta
+        this.appStateService.setCurrentTitle(title); // Establecer el título en el estado
+      });
   }
 
   toggleStudents() {
@@ -48,5 +48,8 @@ export class AppComponent implements OnInit {
     this.showStudents = false;
     this.showCourses = false;
   }
+
+
+
 
 }

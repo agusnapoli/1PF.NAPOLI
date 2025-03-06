@@ -2,7 +2,8 @@
   <button mat-icon-button (click)="drawerT.emit()" class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span appLetterSize>Administración</span>
+  <span class="toolbar-text" appLetterSize>Administración</span>
+  <span class="toolbar-text component-title">{{ title }}</span> <!-- Mostrar el título del componente -->
   <span class="spacer"></span> <!-- Espaciador para empujar el nombre del usuario a la derecha -->
   <span class="user-name" *ngIf="userName">{{ userName }}</span> <!-- Mostrar el nombre del usuario -->
 </mat-toolbar>

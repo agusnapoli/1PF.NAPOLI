@@ -19,5 +19,10 @@ export class ToolbarComponent {
     this.appStateService.currentUser$.subscribe(user => {
       this.userName = user ? user.name : null; // Obtener el nombre del usuario
     });
+
+    this.appStateService.currentTitle$.subscribe(title => {
+      this.title = title; // Obtener el título del componente
+    });
   }
+
 }

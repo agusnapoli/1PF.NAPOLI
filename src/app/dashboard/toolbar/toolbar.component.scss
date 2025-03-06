@@ -5,6 +5,18 @@ mat-toolbar {
   align-items: center; /* Centrar verticalmente */
 }
 
-.user-name {
-  margin-left: auto; /* Empujar el nombre del usuario al extremo derecho */
+.component-title {
+  flex: 1; /* Permitir que el título ocupe el espacio disponible */
+  text-align: center; /* Centrar el texto */
 }
+
+.user-name {
+  margin-left: auto;
+  font-size: 14px; /* Tamaño de fuente más pequeño para el nombre de usuario */
+  /* Empujar el nombre del usuario al extremo derecho */
+}
+/* styles.css o el archivo SCSS correspondiente */
+.toolbar-text {
+  font-size: 28px; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+
