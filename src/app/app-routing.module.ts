@@ -33,6 +33,8 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    data: { title: '' } // Título para la ruta
+
   },
   {
     path: 'enrollments',

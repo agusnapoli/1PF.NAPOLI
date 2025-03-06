@@ -7,7 +7,7 @@ import { User } from '../shared/models/users.model';
 })
 export class AppStateService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
-  private currentTitleSubject = new BehaviorSubject<string>('Administración'); // Título por defecto
+  private currentTitleSubject = new BehaviorSubject<string>(''); // Título por defecto
 
   currentUser$ = this.currentUserSubject.asObservable();
   currentTitle$ = this.currentTitleSubject.asObservable();
