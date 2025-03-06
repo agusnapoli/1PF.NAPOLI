@@ -19,6 +19,9 @@ import { EnrollmentService } from './enrollments.service';
 import { enrollmentsReducer } from './store/enrollments.reducer';
 import { EnrollmentEffects } from './store/enrollments.effects';
 import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { MatButton } from '@angular/material/button';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    MatButton // Add MatTableModule here
+    MatButton,
+    MatIcon,
+    MatButtonModule // Add MatTableModule here
 
   ],
   exports: [

@@ -80,25 +80,17 @@
   ],
   "enrollments": [
     {
-      "id": "enr001",
-      "studentId": "stu001",
-      "courseId": "101",
-      "date": "2023-10-01"
-    },
-    {
-      "id": "enr002",
+      "id": "16o5ujcff",
       "studentId": "stu002",
-      "courseId": "102",
-      "date": "2023-10-05"
+      "courseId": "102"
     },
     {
-      "id": "enr003",
+      "id": "w9xm3b4fa",
       "studentId": "stu003",
-      "courseId": "101",
-      "date": "2023-10-10"
+      "courseId": "203"
     },
     {
-      "id": "t98l456vg",
+      "id": "8xxd8b1dj",
       "studentId": "stu001",
       "courseId": "102"
     }

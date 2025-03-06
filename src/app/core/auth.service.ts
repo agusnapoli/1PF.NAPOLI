@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 import { User } from '../shared/models/users.model';
 import { ApiService } from './api.service';
 
@@ -13,9 +15,7 @@ export class AuthService {
   constructor(
     private router: Router,
     private apiService: ApiService
-  ) {
-    this.initializeAuth(); // 🔹 Ejecutar al iniciar el servicio
-  }
+  ) {}
 
   login(email: string, password: string): Observable<User> {
     return new Observable(observer => {
@@ -33,10 +33,12 @@ export class AuthService {
     });
   }
 
+
+
+
   logout(): void {
     this.authUser$.next(null);
     localStorage.removeItem('authUser');
-    localStorage.removeItem('authToken');
     this.router.navigate(['/auth']);
   }
 
@@ -46,6 +48,7 @@ export class AuthService {
       const token = localStorage.getItem('authToken');
 
       if (user && token && user.token === token) {
+
         this.apiService.get<User[]>('users').subscribe(users => {
           const validUser = users.find(u => u.id === user.id);
           if (validUser) {
@@ -61,6 +64,8 @@ export class AuthService {
     });
   }
 
+
+
   isAdmin(): boolean {
     return this.authUser$.value?.role === 'admin';
   }
@@ -72,6 +77,7 @@ export class AuthService {
   getCurrentRole(): 'admin' | 'employee' | null {
     return this.authUser$.value?.role || null;
   }
+
 
   isAuthenticated(): boolean {
     return !!this.authUser$.value;
@@ -87,18 +93,24 @@ export class AuthService {
     localStorage.setItem('authToken', user.token || '');
   }
 
+
   initializeAuth(): void {
     const user = localStorage.getItem('authUser');
     const token = localStorage.getItem('authToken');
+    const tokenExpiry = localStorage.getItem('tokenExpiry'); // Agregar la verificación de expiración
 
-    if (user && token) {
+    if (user && token && tokenExpiry) {
       const parsedUser = JSON.parse(user);
+      const currentTime = new Date().getTime();
 
-      if (parsedUser.token === token) {
-        this.authUser$.next(parsedUser); // 🔹 Restaurar sesión
+      // Verificar si el token ha expirado
+      if (parsedUser.token === token && currentTime < parseInt(tokenExpiry)) {
+        this.authUser$.next(parsedUser);
       } else {
         this.logout();
       }
     }
   }
+
+
 }

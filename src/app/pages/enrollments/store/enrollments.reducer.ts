@@ -43,5 +43,10 @@ export const enrollmentsReducer = createReducer(
   on(EnrollmentActions.addEnrollment, (state, { enrollment }) => ({
     ...state,
     enrollments: [...state.enrollments, enrollment],
-  }))
+  })),
+  on(EnrollmentActions.deleteEnrollment, (state, { id }) => ({
+    ...state,
+    enrollments: state.enrollments.filter(enrollment => enrollment.id !== id),
+  })),
+  on(EnrollmentActions.resetEnrollments, () => initialState) // Acción para restablecer el estado
 );
