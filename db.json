@@ -65,14 +65,6 @@
   ],
   "users": [
     {
-      "id": "2",
-      "name": "Admin",
-      "email": "admin@example.com",
-      "password": "admin123",
-      "token": "admin-token-123",
-      "role": "admin"
-    },
-    {
       "id": "",
       "name": "Agustina",
       "email": "emoye@example.com",
@@ -81,7 +73,7 @@
     },
     {
       "id": "m56mrcpd6uo",
-      "name": "qqqqqqqqqqqqqqqq",
+      "name": "11111111111111qqqqqq",
       "email": "employe@example.com",
       "password": "dadasd",
       "role": "admin"
@@ -89,9 +81,23 @@
     {
       "id": "t5sfua8yj6e",
       "name": "asdasda",
-      "email": "admin@example.com\t",
+      "email": "admin@example.com",
       "password": "sdasdasd",
       "role": "admin"
+    },
+    {
+      "id": "g41wqo41wd",
+      "name": "2222222222222222",
+      "email": "emoye@example.com",
+      "password": "sfdsfsf",
+      "role": "employee"
+    },
+    {
+      "id": "vc2v06r7hso",
+      "name": "aaaaaaaaaaa",
+      "email": "emoye@example.com\t",
+      "password": "sssssssssssssss",
+      "role": "employee"
     }
   ],
   "enrollments": [
@@ -115,6 +121,13 @@
       "courseId": "102",
       "enrollmentDate": "2025-03-06T15:37:51.724Z",
       "userId": null
+    },
+    {
+      "id": "5gcpilf5o",
+      "studentId": "stu001",
+      "courseId": "101",
+      "enrollmentDate": "2025-03-06T18:20:21.824Z",
+      "userId": "t5sfua8yj6e"
     }
   ]
 }

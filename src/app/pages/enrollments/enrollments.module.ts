@@ -43,7 +43,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatTableModule,
     MatButton,
     MatIcon,
-    MatButtonModule // Add MatTableModule here
+    MatButtonModule    // Add MatTableModule here
 
   ],
   exports: [

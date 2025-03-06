@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // Importar Router
+
+
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -6,6 +9,9 @@ import { User } from './models/user.model';
 import * as UsersActions from './store/users.actions';
 import { selectUsers } from './store/users.selectors';
 import { AuthService } from '../../core/auth.service';
+import { map } from 'rxjs';
+import { startWith, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -13,14 +19,16 @@ import { AuthService } from '../../core/auth.service';
   styleUrls: ['./users.component.scss'],
   standalone: false,
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   users$: Observable<User[]>;
   enrollmentForm: FormGroup; // Definir el FormGroup
   isEditing: boolean = false; // Para manejar el estado de edición
-  isAdmin$: Observable<boolean> | undefined; // Para verificar si el usuario es admin
+  isAdmin$: Observable<boolean> = of(false); // Inicializar como un Observable vacío
+
   currentUserId: string | null = null; // Para manejar la edición
 
-  constructor(private store: Store, private authService: AuthService, private fb: FormBuilder) {
+  constructor(private store: Store, private authService: AuthService, private fb: FormBuilder, private router: Router) {
+
     this.enrollmentForm = this.fb.group({ // Inicializar el FormGroup
       name: [''],
       email: [''],
@@ -28,10 +36,19 @@ export class UsersComponent implements OnInit {
       role: ['employee']
     });
     this.users$ = this.store.select(selectUsers);
+    this.isAdmin$ = this.authService.getAuthUser().pipe(
+      map((user) => user?.role === 'admin'),
+      startWith(false), // Valor inicial
+      catchError(() => of(false)) // Manejo de errores
+    );
   }
 
   ngOnInit(): void {
     this.store.dispatch(UsersActions.loadUsers());
+  }
+
+  ngOnDestroy(): void {
+    // Aquí puedes agregar lógica para limpiar si es necesario
   }
 
   createOrUpdateUser(): void {
@@ -62,7 +79,15 @@ export class UsersComponent implements OnInit {
     this.isEditing = true; // Establecer que se está editando
   }
 
+
+
+  viewUserDetails(id: string): void {
+    this.router.navigate(['/users', id]); // Navegar al componente de detalles de usuario
+  }
+
+
   deleteUser(id: string): void {
+
     this.store.dispatch(UsersActions.deleteUser({ id }));
   }
 

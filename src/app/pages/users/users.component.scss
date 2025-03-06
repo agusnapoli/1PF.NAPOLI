@@ -1,0 +1,60 @@
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 840px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.mat-typography {
+  background-color: #8a7a7ad5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.with-background {
+  background-color: #8a7a7ad5;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+button {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  max-width: 560px;
+  background-color: #846b6bd5;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  align-self: center;
+}
+
+mat-form-field {
+  width: 100%;
+  max-width: 420px;
+  background-color: #846b6bd5;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Added gap for consistency with courses component */
+}

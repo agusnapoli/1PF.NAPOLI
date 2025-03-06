@@ -1,0 +1,19 @@
+<div class="centered-container with-background">
+  <ng-container *ngIf="userDetails; else loading">
+    <h2>Detalles del Usuario</h2>
+    <p><strong>ID:</strong> {{ userDetails.id }}</p>
+    <p><strong>Nombre:</strong> {{ userDetails.name }}</p>
+    <p><strong>Correo Electrónico:</strong> {{ userDetails.email }}</p>
+    <p><strong>Rol:</strong> {{ userDetails.role }}</p>
+    <p><strong>Password:</strong> {{ userDetails.password }}</p>
+
+  </ng-container>
+
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" routerLink="/users">Volver</button>
+  </mat-card-actions>
+</div>
