@@ -37,7 +37,35 @@ export class UsersEffects {
       )
     )
   );
+
+  addUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UsersActions.addUser),
+      mergeMap(action =>
+        this.usersService.addUser(action.user).pipe(
+          map(() => UsersActions.loadUsers()), // Recargar la lista después de agregar
+          catchError(error => of(UsersActions.loadUsersFailure({ error })))
+        )
+      )
+    )
+  );
+
+
+
+
+  updateUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UsersActions.updateUser),
+      mergeMap(action =>
+        this.usersService.updateUser(action.user).pipe(
+          map(() => UsersActions.loadUsers()), // Recargar la lista después de actualizar
+          catchError(error => of(UsersActions.loadUsersFailure({ error })))
+        )
+      )
+    )
+  );
+
 }
 
 
-  // Aquí puedes agregar efectos para agregar, actualizar y eliminar usuarios
+
