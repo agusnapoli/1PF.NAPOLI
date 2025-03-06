@@ -80,11 +80,6 @@
   ],
   "enrollments": [
     {
-      "id": "16o5ujcff",
-      "studentId": "stu002",
-      "courseId": "102"
-    },
-    {
       "id": "w9xm3b4fa",
       "studentId": "stu003",
       "courseId": "203"

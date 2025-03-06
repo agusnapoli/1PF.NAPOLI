@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectError, selectIsLoading, selectEnrollments } from './store/enrollments.selectors';
 import { map, startWith, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-enrollments',
@@ -29,13 +30,15 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   enrollmentForm: FormGroup;
+  isAdmin$: Observable<boolean>; // Check if the user is an admin
 
   constructor(
     private store: Store,
     private studentsService: StudentsService,
     private enrollmentService: EnrollmentService,
     private coursesService: CoursesService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService // Inject AuthService
   ) {
     this.enrollments$ = this.store.select(selectEnrollments).pipe(
       startWith([]),
@@ -52,6 +55,9 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
       studentId: ['', Validators.required],
       courseId: ['', Validators.required]
     });
+
+    // Check if the user is an admin
+    this.isAdmin$ = this.authService.getAuthUser().pipe(map((user) => user?.role === 'admin'));
   }
 
   ngOnInit(): void {
@@ -116,6 +122,7 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
       }
     }
   }
+
   deleteEnrollment(id: string): void {
     this.enrollmentService.deleteEnrollment(id).subscribe({
         next: () => {
@@ -126,7 +133,6 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
             console.error('Error deleting enrollment:', error);
         }
     });
-
   }
 
   modifyEnrollment(enrollment: Enrollment): void {

@@ -1,4 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { AuthService } from '../../core/auth.service';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 import { StudentsService } from '../../core/students.service';
 import { Student } from '../../shared/models/students.model';
 
@@ -15,7 +19,12 @@ export class StudentsComponent implements OnInit {
   students: Student[] = [];
   selectedStudent: Student | null = null;
 
-  constructor(private studentsService: StudentsService) { }
+  isAdmin$: Observable<boolean>; // Check if the user is an admin
+
+  constructor(private studentsService: StudentsService, private authService: AuthService) {
+    this.isAdmin$ = this.authService.getAuthUser().pipe(map((user) => user?.role === 'admin'));
+  }
+
 
   ngOnInit(): void {
     this.studentsService.getStudents().subscribe(data => {
@@ -76,7 +85,12 @@ export class StudentsComponent implements OnInit {
     this.showForm = true;
   }
 
+  viewStudentDetails(student: Student): void {
+    // Logic to view student details
+  }
+
   cancelEdit(): void {
+
     this.selectedStudent = null;
     this.showForm = false;
   }
