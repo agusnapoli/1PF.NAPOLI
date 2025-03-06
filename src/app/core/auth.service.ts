@@ -87,28 +87,38 @@ export class AuthService {
     return this.authUser$.asObservable();
   }
 
+
   setAuthUser(user: User): void {
     this.authUser$.next(user);
     localStorage.setItem('authUser', JSON.stringify(user));
     localStorage.setItem('authToken', user.token || '');
-  }
 
+    const expiryTime = new Date().getTime() + 60 * 60 * 1000; // Expira en 1 hora
+    localStorage.setItem('tokenExpiry', expiryTime.toString());
+
+    console.log('Usuario autenticado y guardado en localStorage:', user);
+  }
 
   initializeAuth(): void {
     const user = localStorage.getItem('authUser');
     const token = localStorage.getItem('authToken');
-    const tokenExpiry = localStorage.getItem('tokenExpiry'); // Agregar la verificación de expiración
+    const tokenExpiry = localStorage.getItem('tokenExpiry');
+
+    console.log('Intentando restaurar sesión...'); // Log para depuración
 
     if (user && token && tokenExpiry) {
       const parsedUser = JSON.parse(user);
       const currentTime = new Date().getTime();
 
-      // Verificar si el token ha expirado
-      if (parsedUser.token === token && currentTime < parseInt(tokenExpiry)) {
+      if (currentTime < parseInt(tokenExpiry)) {
         this.authUser$.next(parsedUser);
+        console.log('Sesión restaurada:', parsedUser); // Verificar si se carga el usuario
       } else {
+        console.log('Token expirado, cerrando sesión.');
         this.logout();
       }
+    } else {
+      console.log('No hay usuario autenticado en localStorage.');
     }
   }
 

@@ -41,8 +41,8 @@ export class AuthComponent {
         }
       },
       error: (err) => {
-        this.errorMessage = 'Credenciales incorrectas';
-        console.error('Login error:', err);
+        this.errorMessage = 'Nombre de usuario o contrasenia incorrectas';
+
       }
     });
   }
