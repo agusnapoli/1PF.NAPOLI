@@ -1,0 +1,47 @@
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 840px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.with-background {
+  background-color: #8a7a7ad5;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  max-width: 560px;
+  background-color: #846b6bd5;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+mat-form-field {
+  width: 100%;
+  max-width: 420px;
+  background-color: #846b6bd5;
+  border-radius: 5px;
+  padding: 10px;
+}

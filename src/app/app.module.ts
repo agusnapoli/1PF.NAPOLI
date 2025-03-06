@@ -1,6 +1,4 @@
 import { NgModule, isDevMode } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
-
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,7 +16,7 @@ import { rootReducer } from './pages/enrollments/store/root.reducer';
 
 @NgModule({
   declarations: [
-    AppComponent,
+AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,8 +25,6 @@ import { rootReducer } from './pages/enrollments/store/root.reducer';
     ModulesModule,
     AuthModule,
     StoreModule.forRoot(rootReducer),
-    MatTableModule,
-
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
   ],

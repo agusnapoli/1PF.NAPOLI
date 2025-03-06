@@ -33,7 +33,12 @@ export class AuthComponent {
 
     this.authService.login(email, password).subscribe({
       next: () => {
-        this.router.navigate(['/home']);
+        // Verificar si el usuario está autenticado antes de redirigir
+        if (this.authService.isAuthenticated()) {
+          this.router.navigate(['/home']);
+        } else { // ✅ ELSE correctamente ubicado
+          this.errorMessage = 'Error al autenticar el usuario.';
+        }
       },
       error: (err) => {
         this.errorMessage = 'Credenciales incorrectas';
