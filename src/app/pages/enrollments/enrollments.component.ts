@@ -84,42 +84,47 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
 
   createOrUpdateEnrollment(): void {
     if (this.enrollmentForm.valid) {
-      const enrollment: Enrollment = {
-        id: this.currentEnrollmentId || this.generateId(), // Usa el ID existente si está en edición
-        studentId: this.enrollmentForm.value.studentId,
-        courseId: this.enrollmentForm.value.courseId
-      };
+      this.authService.getAuthUser().subscribe(user => {
+        const enrollment: Enrollment = {
+          id: this.currentEnrollmentId || this.generateId(), // Usa el ID existente si está en edición
 
-      if (this.currentEnrollmentId) {
-        // Modo edición: actualizar inscripción existente
-        console.log('Updating enrollment:', enrollment); // Debugging
+          studentId: this.enrollmentForm.value.studentId,
+          courseId: this.enrollmentForm.value.courseId,
+          enrollmentDate: new Date(), // Set the current date as enrollment date
+          userId: user ? user.id : '' // Asignar el ID del usuario autenticado o una cadena vacía
+        };
 
-        this.enrollmentService.updateEnrollment(enrollment).subscribe({
-          next: (updatedEnrollment: Enrollment) => {
-            this.store.dispatch(EnrollmentActions.updateEnrollment({ enrollment: updatedEnrollment }));
-            this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de actualizar
-            this.resetForm(); // Resetear formulario
-          },
-          error: (error: any) => {
-            console.error('Error updating enrollment:', error);
-          }
-        });
+        if (this.currentEnrollmentId) {
+          // Modo edición: actualizar inscripción existente
+          console.log('Updating enrollment:', enrollment); // Debugging
 
-      } else {
-        // Modo creación: agregar una nueva inscripción
-        console.log('Adding new enrollment:', enrollment); // Debugging
+          this.enrollmentService.updateEnrollment(enrollment).subscribe({
+            next: (updatedEnrollment: Enrollment) => {
+              this.store.dispatch(EnrollmentActions.updateEnrollment({ enrollment: updatedEnrollment }));
+              this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de actualizar
+              this.resetForm(); // Resetear formulario
+            },
+            error: (error: any) => {
+              console.error('Error updating enrollment:', error);
+            }
+          });
 
-        this.enrollmentService.addEnrollment(enrollment).subscribe({
-          next: (newEnrollment: Enrollment) => {
-            this.store.dispatch(EnrollmentActions.addEnrollment({ enrollment: newEnrollment }));
-            this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de agregar
-            this.resetForm(); // Resetear formulario
-          },
-          error: (error: any) => {
-            console.error('Error adding enrollment:', error);
-          }
-        });
-      }
+        } else {
+          // Modo creación: agregar una nueva inscripción
+          console.log('Adding new enrollment:', enrollment); // Debugging
+
+          this.enrollmentService.addEnrollment(enrollment).subscribe({
+            next: (newEnrollment: Enrollment) => {
+              this.store.dispatch(EnrollmentActions.addEnrollment({ enrollment: newEnrollment }));
+              this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de agregar
+              this.resetForm(); // Resetear formulario
+            },
+            error: (error: any) => {
+              console.error('Error adding enrollment:', error);
+            }
+          });
+        }
+      });
     }
   }
 

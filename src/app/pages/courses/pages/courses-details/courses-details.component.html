@@ -11,6 +11,10 @@
     <ng-template #courseDetails>
       <h2>{{ course?.name }}</h2>
       <p>{{ course?.description }}</p>
+      <p><strong>Cantidad de Horas:</strong> {{ course?.cantidadHoras }}</p>
+      <p><strong>Cantidad de Clases:</strong> {{ course?.cantidadClases }}</p>
+      <p><strong>Nombre del Profesor:</strong> {{ course?.nombreProfesor }}</p>
+
     </ng-template>
     <mat-card-actions>
       <button mat-raised-button color="primary" routerLink="/courses">Volver</button>

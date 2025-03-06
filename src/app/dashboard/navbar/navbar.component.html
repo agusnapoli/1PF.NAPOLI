@@ -7,6 +7,9 @@
 <button mat-raised-button (click)="goToStudents()">Administrar Estudiantes</button>
 <button mat-raised-button (click)="goToCourses()">Administrar Cursos</button>
 <button mat-raised-button (click)="goToEnrollments()">Administrar Inscripciones</button>
+<button mat-raised-button (click)="goToUsers()" *ngIf="isAdmin()">Usuarios</button>
+
+
 
 
 <button mat-raised-button (click)="logout()">Cerrar Sesion</button>

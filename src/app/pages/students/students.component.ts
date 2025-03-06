@@ -37,6 +37,8 @@ export class StudentsComponent implements OnInit {
   }
 
   addStudent(student: Student) {
+
+
     if (this.selectedStudent) {
       this.studentsService.updateStudent(this.selectedStudent.id!, student)
         .subscribe({

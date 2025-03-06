@@ -16,7 +16,8 @@ export class CoursesComponent implements OnInit {
   @Input() showCourses: boolean = false;
   courses: Course[] = [];
   editingCourseId: string | null = null;
-  selectedCourse: Course = { id: '', name: '', description: '' };
+  selectedCourse: Course = { id: '', name: '', description: '', cantidadHoras: 0, cantidadClases: 0, nombreProfesor: '' };
+
 
   isAdmin$: Observable<boolean> | undefined;
 

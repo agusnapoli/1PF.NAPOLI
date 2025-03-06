@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 
@@ -36,6 +37,13 @@ export class NavbarComponent {
     this.router.navigate(['/auth']);
   }
 
+  goToUsers(): void {
+    this.router.navigate(['/users']);
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin(); // Check if the user is an admin
+  }
 
 
 

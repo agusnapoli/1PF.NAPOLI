@@ -3,17 +3,18 @@
     {
       "id": "101",
       "name": "Programación",
-      "description": "Curso básico de desarrollo de software"
+      "description": "Curso básico de desarrollo de software",
+      "cantidadHoras": 40,
+      "cantidadClases": 10,
+      "nombreProfesor": "Juan Pérez"
     },
     {
       "id": "102",
       "name": "Física",
-      "description": "Conceptos fundamentales de la física"
-    },
-    {
-      "id": "203",
-      "name": "Economía",
-      "description": "Conceptos básicos sobre el sistema económico global"
+      "description": "Conceptos fundamentales de la física",
+      "cantidadHoras": 30,
+      "cantidadClases": 8,
+      "nombreProfesor": "María López"
     }
   ],
   "classes": [
@@ -38,37 +39,31 @@
       "id": "stu001",
       "firstName": "Lucía",
       "lastName": "Gómez",
-      "email": "lucia.gomez@example.com",
-      "courses": [
-        "101"
-      ],
-      "age": "20",
-      "course": null
+      "age": 20,
+      "course": null,
+      "perfil": "desarrollador",
+      "sexo": "femenino"
     },
     {
       "id": "stu002",
       "firstName": "Martín",
       "lastName": "Rodríguez",
-      "age": "25",
-      "course": "102"
+      "age": 25,
+      "course": "102",
+      "perfil": "IT",
+      "sexo": "masculino"
     },
     {
       "id": "stu003",
       "firstName": "Ana",
       "lastName": "Fernández",
-      "age": "19",
-      "course": "101"
+      "age": 19,
+      "course": "101",
+      "perfil": "usuario final",
+      "sexo": "femenino"
     }
   ],
   "users": [
-    {
-      "id": "1",
-      "name": "Admin",
-      "email": "admin@example.com",
-      "password": "admin123",
-      "token": "admin-token-123",
-      "role": "admin"
-    },
     {
       "id": "2",
       "name": "Empleado",
@@ -82,12 +77,23 @@
     {
       "id": "w9xm3b4fa",
       "studentId": "stu003",
-      "courseId": "203"
+      "courseId": "101",
+      "enrollmentDate": "2025-03-06T06:42:45.095Z",
+      "userId": null
     },
     {
       "id": "8xxd8b1dj",
       "studentId": "stu001",
-      "courseId": "102"
+      "courseId": "102",
+      "enrollmentDate": "2023-10-01T00:00:00Z",
+      "userId": null
+    },
+    {
+      "id": "makwg4wiq",
+      "studentId": "stu003",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-06T15:37:51.724Z",
+      "userId": null
     }
   ]
 }

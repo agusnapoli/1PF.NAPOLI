@@ -7,9 +7,25 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Descripcion</mat-label>
+      <mat-label>Descripción</mat-label>
       <input matInput required name="description" [(ngModel)]="selectedCourse.description">
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cantidad de Horas</mat-label>
+      <input matInput required type="number" name="cantidadHoras" [(ngModel)]="selectedCourse.cantidadHoras">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cantidad de Clases</mat-label>
+      <input matInput required type="number" name="cantidadClases" [(ngModel)]="selectedCourse.cantidadClases">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nombre del Profesor</mat-label>
+      <input matInput required name="nombreProfesor" [(ngModel)]="selectedCourse.nombreProfesor">
+    </mat-form-field>
+
 
 
     <div class="form-buttons">

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormularioComponent } from './formulario/formulario.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 
 import {MatListModule} from '@angular/material/list';
 
@@ -22,7 +24,8 @@ import { SharedModule } from '../../shared/shared.module';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatSelectModule
   ],
   exports: [
     FormularioComponent

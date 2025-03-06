@@ -37,6 +37,30 @@
           <mat-error *ngIf="isFieldRequired('course')">El curso es requerido</mat-error>
         </mat-form-field>
       </div>
+
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Perfil</mat-label>
+          <mat-select formControlName="perfil" (blur)="markAsTouched('perfil')">
+            <mat-option value="desarrollador">Desarrollador</mat-option>
+            <mat-option value="IT">IT</mat-option>
+            <mat-option value="usuario final">Usuario Final</mat-option>
+          </mat-select>
+          <mat-error *ngIf="isFieldRequired('perfil')">El perfil es requerido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Sexo</mat-label>
+          <mat-select formControlName="sexo" (blur)="markAsTouched('sexo')">
+            <mat-option value="masculino">Masculino</mat-option>
+            <mat-option value="femenino">Femenino</mat-option>
+          </mat-select>
+          <mat-error *ngIf="isFieldRequired('sexo')">El sexo es requerido</mat-error>
+        </mat-form-field>
+      </div>
+
     </div>
 
     <button mat-raised-button type="submit">Guardar</button>
