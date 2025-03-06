@@ -33,7 +33,6 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    // Título para la ruta
   },
   {
     path: 'enrollments',
@@ -50,7 +49,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
   {path: '**', redirectTo:'/home', pathMatch: 'full'}
 ];
-
 
 
 

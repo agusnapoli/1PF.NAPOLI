@@ -64,7 +64,7 @@
         <button mat-icon-button color="warn" (click)="deleteEnrollment(enrollment.id)" >
           <mat-icon>delete</mat-icon>
         </button>
-        <button mat-icon-button color="primary" (click)="modifyEnrollment(enrollment)" *ngIf="isAdmin$ | async">
+        <button mat-icon-button color="primary" (click)="modifyEnrollment(enrollment)" >
           <mat-icon>edit</mat-icon>
 
         </button>

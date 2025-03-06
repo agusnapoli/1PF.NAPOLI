@@ -2,36 +2,36 @@
   "courses": [
     {
       "id": "101",
-      "name": "Programación",
-      "description": "Curso básico de desarrollo de software",
+      "name": "Programación Web",
+      "description": "Curso básico sobre desarrollo web con HTML, CSS, JavaScript y frameworks modernos",
       "cantidadHoras": 40,
       "cantidadClases": 10,
-      "nombreProfesor": "Juan Pérez"
+      "nombreProfesor": "Carlos Fernández"
     },
     {
       "id": "102",
-      "name": "Física",
-      "description": "Conceptos fundamentales de la física",
+      "name": "Física para Ingenieros",
+      "description": "Fundamentos de la física aplicados a la ingeniería, incluyendo mecánica, electricidad y magnetismo",
       "cantidadHoras": 30,
       "cantidadClases": 8,
-      "nombreProfesor": "María López"
+      "nombreProfesor": "Laura García"
     }
   ],
   "classes": [
     {
       "id": "xyz123",
       "name": "Introducción a la Programación",
-      "description": "Clase inicial sobre lógica de programación"
+      "description": "Clase básica sobre la lógica de programación y estructuras de control"
     },
     {
       "id": "cls002",
       "name": "Análisis de Literatura",
-      "description": "Interpretación y estudio de obras literarias"
+      "description": "Estudio e interpretación de obras literarias clásicas"
     },
     {
       "id": "cls003",
       "name": "Principios de Economía",
-      "description": "Fundamentos del mercado y la producción"
+      "description": "Conceptos fundamentales sobre la oferta, demanda, mercados y teoría económica"
     }
   ],
   "students": [
@@ -41,7 +41,7 @@
       "lastName": "Gómez",
       "age": 20,
       "course": null,
-      "perfil": "desarrollador",
+      "perfil": "desarrolladora web",
       "sexo": "femenino"
     },
     {
@@ -50,7 +50,7 @@
       "lastName": "Rodríguez",
       "age": 25,
       "course": "102",
-      "perfil": "IT",
+      "perfil": "ingeniero civil",
       "sexo": "masculino"
     },
     {
@@ -65,38 +65,38 @@
   ],
   "users": [
     {
-      "id": "",
-      "name": "Agustina",
-      "email": "emoye@example.com",
-      "password": "sfdsfsf",
+      "id": "u01",
+      "name": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "password": "123456",
       "role": "employee"
     },
     {
-      "id": "m56mrcpd6uo",
-      "name": "11111111111111qqqqqq",
-      "email": "employe@example.com",
-      "password": "dadasd",
+      "id": "u02",
+      "name": "María López",
+      "email": "maria.lopez@example.com",
+      "password": "password123",
       "role": "admin"
     },
     {
-      "id": "t5sfua8yj6e",
-      "name": "Agustina Napoli",
-      "email": "admin@example.com",
-      "password": "sdasdasd",
+      "id": "u03",
+      "name": "Carlos Fernández",
+      "email": "carlos.fernandez@example.com",
+      "password": "admin1234",
       "role": "admin"
     },
     {
-      "id": "g41wqo41wd",
-      "name": "2222222222222222",
-      "email": "emoye@example.com",
-      "password": "sfdsfsf",
+      "id": "u04",
+      "name": "Roberto García",
+      "email": "roberto.garcia@example.com",
+      "password": "securepass",
       "role": "employee"
     },
     {
-      "id": "vc2v06r7hso",
-      "name": "aaaaaaaaaaa",
-      "email": "emoye@example.com\t",
-      "password": "sssssssssssssss",
+      "id": "u05",
+      "name": "Paula Martínez",
+      "email": "paula.martinez@example.com",
+      "password": "mypassword",
       "role": "employee"
     }
   ],
@@ -106,28 +106,28 @@
       "studentId": "stu003",
       "courseId": "101",
       "enrollmentDate": "2025-03-06T06:42:45.095Z",
-      "userId": null
+      "userId": "u0ewe3"
     },
     {
       "id": "8xxd8b1dj",
       "studentId": "stu001",
       "courseId": "102",
       "enrollmentDate": "2023-10-01T00:00:00Z",
-      "userId": null
+      "userId": "usds03"
     },
     {
       "id": "makwg4wiq",
       "studentId": "stu003",
       "courseId": "102",
       "enrollmentDate": "2025-03-06T15:37:51.724Z",
-      "userId": null
+      "userId": "uee03"
     },
     {
       "id": "5gcpilf5o",
       "studentId": "stu001",
       "courseId": "101",
       "enrollmentDate": "2025-03-06T18:20:21.824Z",
-      "userId": "t5sfua8yj6e"
+      "userId": "u03"
     }
   ]
 }

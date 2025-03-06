@@ -2,11 +2,11 @@
   <button mat-raised-button (click)="toggleForm()">Crear estudiante</button>
 
   <app-formulario
-    [student]="selectedStudent"
-    (studentCreated)="addStudent($event)"
-    (cancelEdit)="cancelEdit()"
-    *ngIf="showForm">
-  </app-formulario>
+  (studentCreated)="addStudent($event)"
+  (cancelEdit)="cancelEdit()"
+  *ngIf="(isAdmin$ | async) && showForm">
+</app-formulario>
+
 
   <table mat-table [dataSource]="students">
     <ng-container matColumnDef="name">

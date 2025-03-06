@@ -49,3 +49,14 @@ button {
   padding: 12px 24px;
   font-size: 18px;
 }
+/* Estilo para el contenedor de la sesión incorrecta */
+.error-message-session,.error-message {
+  background-color: #f8d7da; /* Fondo rojo suave */
+  color: #721c24; /* Texto rojo oscuro */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb; /* Borde rojo claro */
+}
+
