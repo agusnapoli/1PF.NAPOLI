@@ -5,17 +5,22 @@ import { tap } from 'rxjs/operators';
 
 import { User } from '../shared/models/users.model';
 import { ApiService } from './api.service';
+import { AppStateService } from './app-state.service'; // Importar el servicio de estado
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private authUser$ = new BehaviorSubject<User | null>(null);
+  private appStateService: AppStateService; // Agregar la propiedad
 
   constructor(
     private router: Router,
-    private apiService: ApiService
-  ) {}
+    private apiService: ApiService,
+    appStateService: AppStateService // Inyectar el servicio de estado
+  ) {
+    this.appStateService = appStateService; // Asignar el servicio inyectado
+  }
 
   login(email: string, password: string): Observable<User> {
     return new Observable(observer => {
@@ -24,6 +29,7 @@ export class AuthService {
 
         if (user) {
           this.setAuthUser(user);
+          this.appStateService.setCurrentUser(user); // Almacenar el usuario en el estado
           observer.next(user);
           observer.complete();
         } else {
@@ -36,8 +42,12 @@ export class AuthService {
 
 
 
+
   logout(): void {
     this.authUser$.next(null);
+
+    this.appStateService.setCurrentUser(null); // Agregar esta línea para eliminar el usuario del estado de la aplicación
+
     localStorage.removeItem('authUser');
     this.router.navigate(['/auth']);
   }

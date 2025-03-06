@@ -1,4 +1,10 @@
 mat-toolbar {
   background-color: #846b6bd5;
+  display: flex; /* Usar flexbox para alinear elementos */
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; /* Centrar verticalmente */
+}
 
+.user-name {
+  margin-left: auto; /* Empujar el nombre del usuario al extremo derecho */
 }
