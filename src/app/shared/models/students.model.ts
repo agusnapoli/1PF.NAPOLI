@@ -3,7 +3,8 @@ export interface Student {
   firstName: string;
   lastName: string;
   age: number;
-  course: string;
+  courses: string[]; // Cambiar a un array para permitir múltiples cursos
+
   perfil: 'desarrollador' | 'IT' | 'usuario final'; // Nuevo campo
   sexo: 'masculino' | 'femenino'; // Nuevo campo
 }

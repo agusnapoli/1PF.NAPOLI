@@ -40,16 +40,20 @@
       "firstName": "Martín",
       "lastName": "Rodríguez",
       "age": 25,
-      "course": "102",
-      "perfil": "ingeniero civil",
-      "sexo": "masculino"
+      "courses": [
+        "101",
+        "102"
+      ],
+      "perfil": "desarrollador",
+      "sexo": "masculino",
+      "course": "102"
     },
     {
       "id": "stu003",
       "firstName": "Ana",
       "lastName": "Fernández",
       "age": 19,
-      "course": "101",
+      "courses": [],
       "perfil": "usuario final",
       "sexo": "femenino"
     },
@@ -57,7 +61,7 @@
       "firstName": "eddwdwadwed",
       "lastName": "dawdwedwed",
       "age": "2313",
-      "course": "3233",
+      "courses": [],
       "perfil": "IT",
       "sexo": "femenino",
       "id": "3TPV"
@@ -67,8 +71,8 @@
       "firstName": "xxxxxxxxxxxxxx",
       "lastName": "sdasdasd",
       "age": "2322",
+      "courses": [],
       "perfil": "desarrollador",
-      "course": "101",
       "sexo": "masculino"
     }
   ],
@@ -137,6 +141,55 @@
       "courseId": "101",
       "enrollmentDate": "2025-03-06T18:20:21.824Z",
       "userId": "u03"
+    },
+    {
+      "id": "l1401ayg1",
+      "studentId": "xury",
+      "courseId": "101",
+      "enrollmentDate": "2025-03-07T00:54:35.170Z",
+      "userId": "u02"
+    },
+    {
+      "id": "hsosxjgus",
+      "studentId": "xury",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-07T00:54:54.725Z",
+      "userId": "u02"
+    },
+    {
+      "id": "uoh34bdwk",
+      "studentId": "stu002",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-07T00:59:38.078Z",
+      "userId": "u02"
+    },
+    {
+      "id": "j278bprgh",
+      "studentId": "stu002",
+      "courseId": "101",
+      "enrollmentDate": "2025-03-07T00:59:53.086Z",
+      "userId": "u02"
+    },
+    {
+      "id": "dhtoe6fx6",
+      "studentId": "stu002",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-07T01:05:32.255Z",
+      "userId": "u02"
+    },
+    {
+      "id": "wrpv4dzez",
+      "studentId": "stu002",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-07T01:05:39.901Z",
+      "userId": "u02"
+    },
+    {
+      "id": "er2jgcy7o",
+      "studentId": "stu002",
+      "courseId": "101",
+      "enrollmentDate": "2025-03-07T01:05:47.621Z",
+      "userId": "u02"
     }
   ]
 }

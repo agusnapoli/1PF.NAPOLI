@@ -11,6 +11,7 @@ import { selectError, selectIsLoading, selectEnrollments } from './store/enrollm
 import { map, startWith, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { AuthService } from '../../core/auth.service';
+import { Student } from '../../shared/models/students.model'; // Importar el modelo de estudiante
 
 @Component({
   selector: 'app-enrollments',
@@ -89,7 +90,9 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
           id: this.currentEnrollmentId || this.generateId(), // Usa el ID existente si está en edición
 
           studentId: this.enrollmentForm.value.studentId,
-          courseId: this.enrollmentForm.value.courseId,
+        courseId: this.enrollmentForm.value.courseId, // Mantener solo el ID del curso
+
+
           enrollmentDate: new Date(), // Set the current date as enrollment date
           userId: user ? user.id : '' // Asignar el ID del usuario autenticado o una cadena vacía
         };
@@ -102,6 +105,7 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
             next: (updatedEnrollment: Enrollment) => {
               this.store.dispatch(EnrollmentActions.updateEnrollment({ enrollment: updatedEnrollment }));
               this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de actualizar
+              this.updateStudentCourse(enrollment.studentId, enrollment.courseId); // Actualizar el curso del estudiante
               this.resetForm(); // Resetear formulario
             },
             error: (error: any) => {
@@ -117,6 +121,7 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
             next: (newEnrollment: Enrollment) => {
               this.store.dispatch(EnrollmentActions.addEnrollment({ enrollment: newEnrollment }));
               this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de agregar
+              this.updateStudentCourse(enrollment.studentId, enrollment.courseId); // Actualizar el curso del estudiante
               this.resetForm(); // Resetear formulario
             },
             error: (error: any) => {
@@ -126,6 +131,29 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
         }
       });
     }
+  }
+
+  updateStudentCourse(studentId: string, courseId: string): void {
+    this.studentsService.getStudentById(studentId).subscribe(student => {
+      // Actualizar el objeto del estudiante con el nuevo curso
+        const updatedStudent: Student = {
+          ...student,
+          courses: student.courses ? [...student.courses, courseId] : [courseId] // Agregar el nuevo curso al array de cursos, inicializar si es necesario
+
+
+      };
+
+        this.studentsService.updateStudent(studentId, updatedStudent).subscribe({
+          // Actualizar el estudiante con el nuevo curso
+
+        next: () => {
+          console.log('Student updated with new course:', updatedStudent);
+        },
+        error: (error: any) => {
+          console.error('Error updating student:', error);
+        }
+      });
+    });
   }
 
   deleteEnrollment(id: string): void {

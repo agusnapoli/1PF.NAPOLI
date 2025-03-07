@@ -20,7 +20,8 @@ export class FormularioComponent {
       lastName: [null, Validators.required],
       age: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
       perfil: [null, Validators.required],
-      course: [null, Validators.required], // Ensure course is included
+      courses: [null, Validators.required], // Change to courses to handle multiple selections
+
       sexo: [null, Validators.required] // New field
     });
 
@@ -62,8 +63,10 @@ export class FormularioComponent {
     // Ensure the student object includes perfil and sexo
     const student: Student = {
       ...this.studentsForm.value,
+      courses: this.studentsForm.value.courses || [], // Include selected courses
       perfil: this.studentsForm.value.perfil || 'usuario final', // Default value if not provided
       sexo: this.studentsForm.value.sexo || 'masculino' // Default value if not provided
+
     };
 
     if (this.studentsForm.valid) {

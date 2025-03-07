@@ -31,13 +31,14 @@
       </div>
 
       <div class="col-6">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Curso</mat-label>
-          <mat-select formControlName="course" (blur)="markAsTouched('course')">
-            <mat-option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="isFieldRequired('course')">El curso es requerido</mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Cursos</mat-label>
+            <mat-select formControlName="courses" (blur)="markAsTouched('courses')" multiple>
+              <mat-option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="isFieldRequired('courses')">Al menos un curso es requerido</mat-error>
+          </mat-form-field>
+
 
       </div>
 
