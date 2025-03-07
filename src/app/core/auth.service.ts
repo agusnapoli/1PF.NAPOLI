@@ -5,21 +5,20 @@ import { tap } from 'rxjs/operators';
 
 import { User } from '../shared/models/users.model';
 import { ApiService } from './api.service';
-import { AppStateService } from './app-state.service'; // Importar el servicio de estado
+import { AppStateService } from './app-state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private authUser$ = new BehaviorSubject<User | null>(null);
-  private appStateService: AppStateService; // Agregar la propiedad
-
+  private appStateService: AppStateService;
   constructor(
     private router: Router,
     private apiService: ApiService,
-    appStateService: AppStateService // Inyectar el servicio de estado
+    appStateService: AppStateService
   ) {
-    this.appStateService = appStateService; // Asignar el servicio inyectado
+    this.appStateService = appStateService;
   }
 
   login(email: string, password: string): Observable<User> {
@@ -29,7 +28,7 @@ export class AuthService {
 
         if (user) {
           this.setAuthUser(user);
-          this.appStateService.setCurrentUser(user); // Almacenar el usuario en el estado
+          this.appStateService.setCurrentUser(user);
           observer.next(user);
           observer.complete();
         } else {
@@ -106,7 +105,7 @@ export class AuthService {
     const expiryTime = new Date().getTime() + 60 * 60 * 1000; // Expira en 1 hora
     localStorage.setItem('tokenExpiry', expiryTime.toString());
 
-    console.log('Usuario autenticado y guardado en localStorage:', user);
+
   }
 
   initializeAuth(): void {
@@ -114,7 +113,7 @@ export class AuthService {
     const token = localStorage.getItem('authToken');
     const tokenExpiry = localStorage.getItem('tokenExpiry');
 
-    console.log('Intentando restaurar sesión...'); // Log para depuración
+
 
     if (user && token && tokenExpiry) {
       const parsedUser = JSON.parse(user);
@@ -122,13 +121,13 @@ export class AuthService {
 
       if (currentTime < parseInt(tokenExpiry)) {
         this.authUser$.next(parsedUser);
-        console.log('Sesión restaurada:', parsedUser); // Verificar si se carga el usuario
+
       } else {
-        console.log('Token expirado, cerrando sesión.');
+
         this.logout();
       }
     } else {
-      console.log('No hay usuario autenticado en localStorage.');
+
     }
   }
 

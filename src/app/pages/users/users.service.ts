@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './models/user.model';
-
+import { User } from '../../shared/models/users.model';
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = 'http://localhost:3001/users'; // Ruta al archivo JSON
+  private apiUrl = 'http://localhost:3001/users';
 
   constructor(private http: HttpClient) {}
 

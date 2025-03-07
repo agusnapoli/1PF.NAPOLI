@@ -58,53 +58,44 @@ export class FormularioComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['student'] && this.student) {
-      const studentCourses = this.student.courses || [];  // Si es un array de IDs, no se necesita mapear
-
+      const studentCourses = this.student.courses || [];
       this.studentsForm.patchValue({
         firstName: this.student.firstName,
         lastName: this.student.lastName,
         age: this.student.age,
         perfil: this.student.perfil,
-        courses: studentCourses  // Asigna directamente los IDs de los cursos
+        courses: studentCourses
       });
 
       this.studentId = this.student.id;
-      this.initialCourses = studentCourses;  // Guarda los IDs directamente
+      this.initialCourses = studentCourses;
     }
   }
 
 
-  removeCourse(event: MatSelectChange): void { // Método para eliminar un curso y la inscripción correspondiente
-    const currentCourses = this.initialCourses; // Cursos inicialmente registrados
-    const newCourses = event.value || []; // Nuevos cursos seleccionados
+  removeCourse(event: MatSelectChange): void {
+    const currentCourses = this.initialCourses;
+    const newCourses = event.value || [];
 
-    // Determinar el curso que se ha deseleccionado
     const deselectedCourseId = currentCourses.find(course => !newCourses.includes(course));
 
-    console.log('Deselected Course ID:', deselectedCourseId);
-    console.log('Student ID:', this.studentId); // Log para depuración
-
-    if (this.studentId && deselectedCourseId) { // Verificar si el ID del estudiante y el curso deseleccionado están disponibles
-      this.enrollmentService.getEnrollments().subscribe((enrollments: any[]) => { // Obtener inscripciones
+    if (this.studentId && deselectedCourseId) {
+      this.enrollmentService.getEnrollments().subscribe((enrollments: any[]) => {
         const enrollmentToDelete = enrollments.find((enrollment: any) => enrollment.studentId === this.studentId && enrollment.courseId === deselectedCourseId); // Buscar inscripción
 
         if (enrollmentToDelete) {
-          console.log('Eliminando inscripción:', enrollmentToDelete.id); // Log para depuración
           this.enrollmentService.deleteEnrollment(enrollmentToDelete.id).subscribe({
             next: () => {
-              console.log('Inscripción eliminada:', enrollmentToDelete.id);
             },
             error: (err: any) => { // Manejar error
-              console.error('Error deleting enrollment:', err);
             }
           });
         }
       });
     }
 
-    // Actualizar la lista de cursos en el formulario
     this.studentsForm.patchValue({
-      courses: newCourses // Actualizar con los nuevos cursos seleccionados
+      courses: newCourses
     });
   }
 

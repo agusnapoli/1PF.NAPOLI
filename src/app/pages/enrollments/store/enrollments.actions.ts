@@ -4,8 +4,7 @@ import { Enrollment } from '../models/enrollment.model';
 export const loadEnrollments = createAction('[Enrollments] Load Enrollments');
 export const deleteEnrollment = createAction(
   '[Enrollments] Delete Enrollment',
-  props<{ id: string }>() // Suponiendo que la inscripción tiene un ID
-);
+  props<{ id: string }>() );
 
 export const resetEnrollments = createAction('[Enrollments] Reset Enrollments');
 

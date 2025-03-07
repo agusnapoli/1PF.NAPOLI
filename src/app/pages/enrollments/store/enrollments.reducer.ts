@@ -17,14 +17,12 @@ export const initialState: EnrollmentState = {
 export const enrollmentsReducer = createReducer(
   initialState,
   on(EnrollmentActions.loadEnrollments, (state) => {
-    console.log('Loading enrollments...');
     return {
       ...state,
       isLoading: true,
     };
   }),
   on(EnrollmentActions.loadEnrollmentsSuccess, (state, { enrollments }) => {
-    console.log('Enrollments loaded successfully:', enrollments);
     return {
       ...state,
       enrollments,
@@ -33,7 +31,6 @@ export const enrollmentsReducer = createReducer(
     };
   }),
   on(EnrollmentActions.loadEnrollmentsFailure, (state, { error }) => {
-    console.error('Error loading enrollments:', error);
     return {
       ...state,
       error,

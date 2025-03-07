@@ -13,8 +13,8 @@ import { Student } from '../../../../shared/models/students.model';
 export class StudentsDetailsComponent implements OnInit {
 
   isLoading = false;
-  student: Student | null = null; // Removed undefined type
-  errorMessage = ''; // Added error message property
+  student: Student | null = null;
+  errorMessage = '';
 
 
 

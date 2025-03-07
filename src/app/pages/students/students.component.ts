@@ -69,7 +69,6 @@ export class StudentsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'age', 'course', 'acciones'];
 
   deleteStudent(student: Student): void {
-    // Eliminar la inscripción correspondiente al curso del estudiante
 
     if (student.id) {
       this.studentsService.deleteStudent(student.id)
@@ -92,9 +91,7 @@ export class StudentsComponent implements OnInit {
     this.showForm = true;
   }
 
-  viewStudentDetails(student: Student): void {
-    // Logic to view student details
-  }
+
 
   cancelEdit(): void {
 

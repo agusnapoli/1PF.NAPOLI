@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../users.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { User } from '../models/user.model';
+import { User } from '../../../shared/models/users.model';
 @Component({
   selector: 'app-users-details',
   standalone: false,
@@ -11,8 +11,8 @@ import { User } from '../models/user.model';
 })
 export class UsersDetailsComponent implements OnInit {
   isLoading = false;
-  userDetails: User | null = null; // Cambiar el tipo según tu modelo de usuario
-  errorMessage: string = ''; // Para manejar mensajes de error
+  userDetails: User | null = null;
+  errorMessage: string = '';
 
 
   constructor(private route: ActivatedRoute, private userService: UsersService) {}
@@ -23,7 +23,7 @@ export class UsersDetailsComponent implements OnInit {
       this.userDetails = user;
     }, error => {
       console.error('Error loading user details:', error);
-      this.userDetails = null; // Manejar el error adecuadamente
+      this.userDetails = null;
     });
 
   }

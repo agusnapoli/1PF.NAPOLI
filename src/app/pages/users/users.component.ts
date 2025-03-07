@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // Importar Router
-
-
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { User } from './models/user.model';
+import { User } from '../../shared/models/users.model';
 import * as UsersActions from './store/users.actions';
 import { selectUsers } from './store/users.selectors';
 import { AuthService } from '../../core/auth.service';
@@ -21,15 +19,13 @@ import { of } from 'rxjs';
 })
 export class UsersComponent implements OnInit, OnDestroy {
   users$: Observable<User[]>;
-  enrollmentForm: FormGroup; // Definir el FormGroup
-  isEditing: boolean = false; // Para manejar el estado de edición
-  isAdmin$: Observable<boolean> = of(false); // Inicializar como un Observable vacío
-
-  currentUserId: string | null = null; // Para manejar la edición
+  enrollmentForm: FormGroup;
+  isEditing: boolean = false;
+  isAdmin$: Observable<boolean> = of(false);
+  currentUserId: string | null = null;
 
   constructor(private store: Store, private authService: AuthService, private fb: FormBuilder, private router: Router) {
-
-    this.enrollmentForm = this.fb.group({ // Inicializar el FormGroup
+    this.enrollmentForm = this.fb.group({
       name: [''],
       email: [''],
       password: [''],
@@ -38,8 +34,8 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.users$ = this.store.select(selectUsers);
     this.isAdmin$ = this.authService.getAuthUser().pipe(
       map((user) => user?.role === 'admin'),
-      startWith(false), // Valor inicial
-      catchError(() => of(false)) // Manejo de errores
+      startWith(false),
+      catchError(() => of(false))
     );
   }
 
@@ -48,7 +44,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Aquí puedes agregar lógica para limpiar si es necesario
+    this.store.dispatch(UsersActions.resetUsers());
   }
 
   createOrUpdateUser(): void {
@@ -62,11 +58,9 @@ export class UsersComponent implements OnInit, OnDestroy {
       };
 
       if (this.currentUserId) {
-        console.log('Updating user:', userToSave);
         this.store.dispatch(UsersActions.updateUser({ user: userToSave }));
         this.resetForm();
       } else {
-        console.log('Adding new user:', userToSave);
         this.store.dispatch(UsersActions.addUser({ user: userToSave }));
         this.resetForm();
       }
@@ -75,26 +69,22 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   updateUser(user: User): void {
     this.currentUserId = user.id;
-    this.enrollmentForm.patchValue(user); // Cargar los datos del usuario en el formulario
-    this.isEditing = true; // Establecer que se está editando
+    this.enrollmentForm.patchValue(user);
+    this.isEditing = true;
   }
-
-
 
   viewUserDetails(id: string): void {
-    this.router.navigate(['/users', id]); // Navegar al componente de detalles de usuario
+    this.router.navigate(['/users', id]);
   }
 
-
   deleteUser(id: string): void {
-
     this.store.dispatch(UsersActions.deleteUser({ id }));
   }
 
   resetForm(): void {
-    this.enrollmentForm.reset({ role: 'employee' }); // Resetear el formulario
+    this.enrollmentForm.reset({ role: 'employee' });
     this.currentUserId = null;
-    this.isEditing = false; // Limpiar el estado de edición
+    this.isEditing = false;
   }
 
   generateId(): string {

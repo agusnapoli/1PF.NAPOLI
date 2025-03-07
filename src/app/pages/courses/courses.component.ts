@@ -42,7 +42,6 @@ export class CoursesComponent implements OnInit {
 
   addCourse(course: Course): void {
     if (this.selectedCourse.id) {
-      // Update existing course
       this.coursesService.updateCourse(this.selectedCourse.id, course)
         .subscribe(updatedCourse => {
           this.courses = this.courses.map(c =>
@@ -50,7 +49,6 @@ export class CoursesComponent implements OnInit {
           );
         });
     } else {
-      // Create new course
       this.coursesService.createCourse(course)
         .subscribe(newCourse => {
           this.courses = [...this.courses, newCourse];

@@ -66,7 +66,6 @@ export class ClasesComponent implements OnInit {
 
   saveClase(clase: Clase): void {
     if (this.selectedClase.id) {
-      // Update existing clase
       this.clasesService.updateClase(this.selectedClase.id, this.selectedClase)
         .subscribe(updatedClase => {
           const index = this.clases.findIndex(c => c.id === updatedClase.id);
@@ -79,7 +78,6 @@ export class ClasesComponent implements OnInit {
           }
         });
     } else {
-      // Create new clase
       if (!clase.id) {
         clase.id = generateId();
       }

@@ -36,51 +36,101 @@
   ],
   "students": [
     {
-      "id": "p6p0",
-      "firstName": "b",
-      "lastName": "b",
-      "age": "4",
+      "id": "JHaM",
+      "firstName": "Joaquín",
+      "lastName": "Herrera",
+      "age": "23",
       "perfil": "desarrollador",
-      "courses": [],
+      "courses": ["101", "102"],
       "sexo": "masculino"
+    },
+    {
+      "id": "MLR8",
+      "firstName": "Mariana",
+      "lastName": "López",
+      "age": "21",
+      "perfil": "IT",
+      "courses": ["101"],
+      "sexo": "femenino"
     }
   ],
   "users": [
-    {
-      "id": "u01",
-      "name": "Juan Pérez",
-      "email": "juan.perez@example.com",
-      "password": "123456",
-      "role": "employee"
-    },
-    {
-      "id": "u02",
-      "name": "María López",
-      "email": "maria.lopez@example.com",
-      "password": "password123",
-      "role": "admin"
-    },
-    {
-      "id": "u03",
-      "name": "Carlos Fernández",
-      "email": "carlos.fernandez@example.com",
-      "password": "admin1234",
-      "role": "admin"
-    },
     {
       "id": "u04",
       "name": "Roberto García",
       "email": "roberto.garcia@example.com",
       "password": "securepass",
-      "role": "employee"
+      "role": "employee",
+      "token": "sample-token-u04"
     },
     {
       "id": "u05",
       "name": "Paula Martínez",
       "email": "paula.martinez@example.com",
       "password": "mypassword",
-      "role": "employee"
+      "role": "employee",
+      "token": "sample-token-u05"
+    },
+    {
+      "id": "u06",
+      "name": "Sofía Ramírez",
+      "email": "sofia.ramirez@example.com",
+      "password": "password123",
+      "role": "admin",
+      "token": "sample-token-u06"
+    },
+    {
+      "id": "u07",
+      "name": "Martín Ríos",
+      "email": "martin.rios@example.com",
+      "password": "martin123",
+      "role": "employee",
+      "token": "sample-token-u07"
+    },
+    {
+      "id": "u08",
+      "name": "Camila Torres",
+      "email": "camila.torres@example.com",
+      "password": "camila2025",
+      "role": "admin",
+      "token": "sample-token-u08"
     }
   ],
-  "enrollments": []
+  "enrollments": [
+    {
+      "id": "76k9f36a2",
+      "studentId": "JHaM",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-07T06:14:47.803Z",
+      "userId": "u06"
+    },
+    {
+      "id": "ivv49awsm",
+      "studentId": "MLR8",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-07T05:42:54.456Z",
+      "userId": "u07"
+    },
+    {
+      "id": "ddj29ln8r",
+      "studentId": "JHaM",
+      "courseId": "101",
+      "enrollmentDate": "2025-03-07T06:14:43.288Z",
+      "userId": "u08"
+    },
+    {
+      "id": "fr4c9s6tx",
+      "studentId": "MLR8",
+      "courseId": "101",
+      "enrollmentDate": "2025-03-07T06:15:20.121Z",
+      "userId": "u05"
+    },
+    {
+      "id": "7tct22stp",
+      "studentId": "JHaM",
+      "courseId": "102",
+      "enrollmentDate": "2025-03-07T06:15:20.123Z",
+      "userId": "u04"
+    }
+  ]
 }

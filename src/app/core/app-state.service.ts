@@ -7,12 +7,11 @@ import { User } from '../shared/models/users.model';
 })
 export class AppStateService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
-  private currentTitleSubject = new BehaviorSubject<string>(''); // Título por defecto
-
+  private currentTitleSubject = new BehaviorSubject<string>('');
   currentUser$ = this.currentUserSubject.asObservable();
   currentTitle$ = this.currentTitleSubject.asObservable();
 
-  setCurrentUser(user: User | null): void { // Aceptar null como argumento
+  setCurrentUser(user: User | null): void {
     this.currentUserSubject.next(user);
   }
 

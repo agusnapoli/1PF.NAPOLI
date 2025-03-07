@@ -33,10 +33,11 @@ export class AuthComponent {
 
     this.authService.login(email, password).subscribe({
       next: () => {
-        // Verificar si el usuario está autenticado antes de redirigir
+
         if (this.authService.isAuthenticated()) {
           this.router.navigate(['/home']);
-        } else { // ✅ ELSE correctamente ubicado
+        } else {
+
           this.errorMessage = 'Error al autenticar el usuario.';
         }
       },

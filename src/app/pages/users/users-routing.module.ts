@@ -5,7 +5,7 @@ import { UsersComponent } from './users.component';
 
 const routes: Routes = [
   { path: '', component: UsersComponent },
-  { path: ':id', component: UsersDetailsComponent } // Agregar ruta para el componente de detalles de usuario
+  { path: ':id', component: UsersDetailsComponent }
 ];
 
 

@@ -16,7 +16,6 @@ export class UsersEffects {
     this.actions$.pipe(
       ofType(UsersActions.loadUsers),
       mergeMap(() => {
-        console.log('Loading users...'); // Debugging
 
         return this.usersService.getUsers().pipe(
           map(users => UsersActions.loadUsersSuccess({ users })),
@@ -31,7 +30,7 @@ export class UsersEffects {
       ofType(UsersActions.deleteUser),
       mergeMap(action =>
         this.usersService.deleteUser(action.id).pipe(
-          map(() => UsersActions.loadUsers()), // Recargar la lista después de eliminar
+          map(() => UsersActions.loadUsers()),
           catchError(error => of(UsersActions.loadUsersFailure({ error })))
         )
       )
@@ -43,7 +42,7 @@ export class UsersEffects {
       ofType(UsersActions.addUser),
       mergeMap(action =>
         this.usersService.addUser(action.user).pipe(
-          map(() => UsersActions.loadUsers()), // Recargar la lista después de agregar
+          map(() => UsersActions.loadUsers()),
           catchError(error => of(UsersActions.loadUsersFailure({ error })))
         )
       )
@@ -58,7 +57,7 @@ export class UsersEffects {
       ofType(UsersActions.updateUser),
       mergeMap(action =>
         this.usersService.updateUser(action.user).pipe(
-          map(() => UsersActions.loadUsers()), // Recargar la lista después de actualizar
+          map(() => UsersActions.loadUsers()),
           catchError(error => of(UsersActions.loadUsersFailure({ error })))
         )
       )

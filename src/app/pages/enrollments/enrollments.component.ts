@@ -11,7 +11,7 @@ import { selectError, selectIsLoading, selectEnrollments } from './store/enrollm
 import { map, startWith, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { AuthService } from '../../core/auth.service';
-import { Student } from '../../shared/models/students.model'; // Importar el modelo de estudiante
+import { Student } from '../../shared/models/students.model';
 
 @Component({
   selector: 'app-enrollments',
@@ -21,9 +21,9 @@ import { Student } from '../../shared/models/students.model'; // Importar el mod
 })
 export class EnrollmentsComponent implements OnInit, OnDestroy {
   students: any[] = [];
-  currentEnrollmentId: string | null = null; // To track the ID of the enrollment being edited
-  isEditing: boolean = false; // To track if we are in editing mode
-  selectedEnrollment: Enrollment | null = null; // Track the enrollment being edited
+  currentEnrollmentId: string | null = null;
+  isEditing: boolean = false;
+  selectedEnrollment: Enrollment | null = null;
 
   courses: any[] = [];
   enrollments$: Observable<Enrollment[]>;
@@ -31,7 +31,7 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   enrollmentForm: FormGroup;
-  isAdmin$: Observable<boolean>; // Check if the user is an admin
+  isAdmin$: Observable<boolean>;
 
   constructor(
     private store: Store,
@@ -39,14 +39,13 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
     private enrollmentService: EnrollmentService,
     private coursesService: CoursesService,
     private fb: FormBuilder,
-    private authService: AuthService // Inject AuthService
+    private authService: AuthService
   ) {
     this.enrollments$ = this.store.select(selectEnrollments).pipe(
       startWith([]),
       map(enrollments => enrollments || []),
       catchError((error) => {
-        console.error('Error loading enrollments:', error);
-        return of([]); // Return an empty array in case of error
+        return of([]);
       })
     );
 
@@ -57,18 +56,18 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
       courseId: ['', Validators.required]
     });
 
-    // Check if the user is an admin
     this.isAdmin$ = this.authService.getAuthUser().pipe(map((user) => user?.role === 'admin'));
   }
 
   ngOnInit(): void {
     this.loadStudents();
     this.loadCourses();
-    this.store.dispatch(EnrollmentActions.loadEnrollments());
+    this.store.dispatch(EnrollmentActions.loadEnrollments()); // <- Aquí agregamos los paréntesis
   }
 
+
   ngOnDestroy(): void {
-    this.store.dispatch(EnrollmentActions.resetEnrollments()); // Action to reset the state
+    this.store.dispatch(EnrollmentActions.resetEnrollments());
   }
 
   loadStudents(): void {
@@ -87,45 +86,34 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
     if (this.enrollmentForm.valid) {
       this.authService.getAuthUser().subscribe(user => {
         const enrollment: Enrollment = {
-          id: this.currentEnrollmentId || this.generateId(), // Usa el ID existente si está en edición
-
+          id: this.currentEnrollmentId || this.generateId(),
           studentId: this.enrollmentForm.value.studentId,
-        courseId: this.enrollmentForm.value.courseId, // Mantener solo el ID del curso
-
-
-          enrollmentDate: new Date(), // Set the current date as enrollment date
-          userId: user ? user.id : '' // Asignar el ID del usuario autenticado o una cadena vacía
+          courseId: this.enrollmentForm.value.courseId,
+          enrollmentDate: new Date(),
+          userId: user ? user.id : ''
         };
 
         if (this.currentEnrollmentId) {
-          // Modo edición: actualizar inscripción existente
-          console.log('Updating enrollment:', enrollment); // Debugging
-
           this.enrollmentService.updateEnrollment(enrollment).subscribe({
             next: (updatedEnrollment: Enrollment) => {
               this.store.dispatch(EnrollmentActions.updateEnrollment({ enrollment: updatedEnrollment }));
-              this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de actualizar
-              this.updateStudentCourse(enrollment.studentId, enrollment.courseId); // Actualizar el curso del estudiante
-              this.resetForm(); // Resetear formulario
+              this.store.dispatch(EnrollmentActions.loadEnrollments());
+              this.updateStudentCourse(enrollment.studentId, enrollment.courseId);
+              this.resetForm();
             },
             error: (error: any) => {
-              console.error('Error updating enrollment:', error);
             }
           });
 
         } else {
-          // Modo creación: agregar una nueva inscripción
-          console.log('Adding new enrollment:', enrollment); // Debugging
-
           this.enrollmentService.addEnrollment(enrollment).subscribe({
             next: (newEnrollment: Enrollment) => {
               this.store.dispatch(EnrollmentActions.addEnrollment({ enrollment: newEnrollment }));
-              this.store.dispatch(EnrollmentActions.loadEnrollments()); // Recargar inscripciones después de agregar
-              this.updateStudentCourse(enrollment.studentId, enrollment.courseId); // Actualizar el curso del estudiante
-              this.resetForm(); // Resetear formulario
+              this.store.dispatch(EnrollmentActions.loadEnrollments());
+              this.updateStudentCourse(enrollment.studentId, enrollment.courseId);
+              this.resetForm();
             },
             error: (error: any) => {
-              console.error('Error adding enrollment:', error);
             }
           });
         }
@@ -135,68 +123,54 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
 
   updateStudentCourse(studentId: string, courseId: string): void {
     this.studentsService.getStudentById(studentId).subscribe(student => {
-      // Actualizar el objeto del estudiante con el nuevo curso
-        const updatedStudent: Student = {
-          ...student,
-          courses: student.courses ? [...student.courses, courseId] : [courseId] // Agregar el nuevo curso al array de cursos, inicializar si es necesario
-
-
+      const updatedStudent: Student = {
+        ...student,
+        courses: student.courses ? [...student.courses, courseId] : [courseId]
       };
 
-        this.studentsService.updateStudent(studentId, updatedStudent).subscribe({
-          // Actualizar el estudiante con el nuevo curso
-
+      this.studentsService.updateStudent(studentId, updatedStudent).subscribe({
         next: () => {
-          console.log('Student updated with new course:', updatedStudent);
         },
         error: (error: any) => {
-          console.error('Error updating student:', error);
         }
       });
     });
   }
 
   deleteEnrollment(id: string): void {
-    // Buscar la inscripción correspondiente antes de eliminarla
     this.enrollmentService.getEnrollmentById(id).subscribe(enrollment => {
       this.selectedEnrollment = enrollment;
       const studentId = enrollment.studentId;
 
       this.enrollmentService.deleteEnrollment(id).subscribe({
-          next: () => {
-              this.store.dispatch(EnrollmentActions.deleteEnrollment({ id }));
-              this.store.dispatch(EnrollmentActions.loadEnrollments()); // Reload enrollments after deletion
+        next: () => {
+          this.store.dispatch(EnrollmentActions.deleteEnrollment({ id }));
+          this.store.dispatch(EnrollmentActions.loadEnrollments());
 
-              if (studentId) {
-                this.studentsService.getStudentById(studentId).subscribe(student => {
-                const updatedCourses = (student.courses || []).filter(course => course !== enrollment.courseId);
+          if (studentId) {
+            this.studentsService.getStudentById(studentId).subscribe(student => {
+              const updatedCourses = (student.courses || []).filter(course => course !== enrollment.courseId);
 
-                  const updatedStudent: Student = {
-                    ...student,
-                    courses: updatedCourses
-                  };
-                  this.studentsService.updateStudent(studentId, updatedStudent).subscribe({
-                      next: () => {
-                          console.log('Curso eliminado del estudiante:', updatedStudent);
-                      },
-                      error: (error: any) => {
-                          console.error('Error al eliminar el curso del estudiante:', error);
-                      }
-                  });
-                });
-              }
-          },
-          error: (error: any) => {
-              console.error('Error deleting enrollment:', error);
+              const updatedStudent: Student = {
+                ...student,
+                courses: updatedCourses
+              };
+              this.studentsService.updateStudent(studentId, updatedStudent).subscribe({
+                next: () => {
+                },
+                error: (error: any) => {
+                }
+              });
+            });
           }
+        },
+        error: (error: any) => {
+        }
       });
     });
   }
 
-
   modifyEnrollment(enrollment: Enrollment): void {
-    console.log('Editing enrollment:', enrollment); // Log para verificar datos
-
     this.selectedEnrollment = enrollment;
     this.currentEnrollmentId = enrollment.id;
     this.isEditing = true;
@@ -205,15 +179,13 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
       studentId: enrollment.studentId,
       courseId: enrollment.courseId
     });
-
-    console.log('Form values after patch:', this.enrollmentForm.value); // Debugging
   }
 
   resetForm(): void {
     this.enrollmentForm.reset();
-    this.currentEnrollmentId = null; // Clear the current enrollment ID
-    this.selectedEnrollment = null; // Clear the selected enrollment
-    this.isEditing = false; // Reset editing flag
+    this.currentEnrollmentId = null;
+    this.selectedEnrollment = null;
+    this.isEditing = false;
   }
 
   private generateId(): string {

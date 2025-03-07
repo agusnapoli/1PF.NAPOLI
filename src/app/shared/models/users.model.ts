@@ -4,5 +4,5 @@ export interface User {
   email: string;
   password: string;
   role: 'admin' | 'employee';
-  token: string;
+  token?: string;
 }

@@ -21,7 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatFormFieldModule,
     MatListModule,
-    MatIconModule, // Agregar el módulo de iconos a las importaciones
+    MatIconModule,
 
     MatInputModule,
     MatButtonModule,

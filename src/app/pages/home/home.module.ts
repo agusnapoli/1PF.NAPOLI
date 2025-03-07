@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 
-import { MatCardModule } from '@angular/material/card'; // Importar MatCardModule
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
