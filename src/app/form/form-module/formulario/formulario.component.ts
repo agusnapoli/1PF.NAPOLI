@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Student } from '../../../shared/models/students.model';
 import { generateRandomString } from '../../../shared/utilities/utilities';
@@ -7,27 +8,34 @@ import { generateRandomString } from '../../../shared/utilities/utilities';
   selector: 'app-formulario',
   standalone: false,
   templateUrl: './formulario.component.html',
-  styleUrl: './formulario.component.scss'
+  styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent {
-
   studentsForm: FormGroup;
+  courses: any[] = []; // Property to hold courses
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.studentsForm = this.fb.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       age: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
-      course: [null, Validators.required],
-      perfil: [null, Validators.required], // New field
+      perfil: [null, Validators.required],
+      course: [null, Validators.required], // Ensure course is included
       sexo: [null, Validators.required] // New field
-
     });
+
+    this.loadCourses(); // Load courses on initialization
   }
 
   @Output() studentCreated = new EventEmitter();
   @Output() cancelEdit = new EventEmitter();
   @Input() student: Student | null = null;
+
+  loadCourses(): void {
+    this.http.get<any[]>('http://localhost:3001/courses').subscribe(data => {
+      this.courses = data; // Store courses in the property
+    });
+  }
 
   isFieldRequired(fieldName: string): boolean | undefined {
     const control = this.studentsForm.get(fieldName);

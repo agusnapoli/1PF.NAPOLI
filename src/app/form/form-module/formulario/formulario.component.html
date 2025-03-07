@@ -33,9 +33,12 @@
       <div class="col-6">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Curso</mat-label>
-          <input formControlName="course" matInput (blur)="markAsTouched('course')" >
+          <mat-select formControlName="course" (blur)="markAsTouched('course')">
+            <mat-option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</mat-option>
+          </mat-select>
           <mat-error *ngIf="isFieldRequired('course')">El curso es requerido</mat-error>
         </mat-form-field>
+
       </div>
 
       <div class="col-6">

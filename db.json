@@ -36,15 +36,6 @@
   ],
   "students": [
     {
-      "id": "stu001",
-      "firstName": "Lucía",
-      "lastName": "Gómez",
-      "age": 20,
-      "course": null,
-      "perfil": "desarrolladora web",
-      "sexo": "femenino"
-    },
-    {
       "id": "stu002",
       "firstName": "Martín",
       "lastName": "Rodríguez",
@@ -61,6 +52,24 @@
       "course": "101",
       "perfil": "usuario final",
       "sexo": "femenino"
+    },
+    {
+      "firstName": "eddwdwadwed",
+      "lastName": "dawdwedwed",
+      "age": "2313",
+      "course": "3233",
+      "perfil": "IT",
+      "sexo": "femenino",
+      "id": "3TPV"
+    },
+    {
+      "id": "xury",
+      "firstName": "xxxxxxxxxxxxxx",
+      "lastName": "sdasdasd",
+      "age": "2322",
+      "perfil": "desarrollador",
+      "course": "101",
+      "sexo": "masculino"
     }
   ],
   "users": [
@@ -110,7 +119,7 @@
     },
     {
       "id": "8xxd8b1dj",
-      "studentId": "stu001",
+      "studentId": null,
       "courseId": "102",
       "enrollmentDate": "2023-10-01T00:00:00Z",
       "userId": "usds03"
@@ -124,7 +133,7 @@
     },
     {
       "id": "5gcpilf5o",
-      "studentId": "stu001",
+      "studentId": null,
       "courseId": "101",
       "enrollmentDate": "2025-03-06T18:20:21.824Z",
       "userId": "u03"

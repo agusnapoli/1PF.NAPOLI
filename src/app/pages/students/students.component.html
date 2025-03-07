@@ -4,7 +4,9 @@
   <app-formulario
   (studentCreated)="addStudent($event)"
   (cancelEdit)="cancelEdit()"
-  *ngIf="(isAdmin$ | async) && showForm">
+  *ngIf="(isAdmin$ | async) && showForm"
+  [student]="selectedStudent">
+
 </app-formulario>
 
 
