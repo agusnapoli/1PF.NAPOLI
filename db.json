@@ -36,43 +36,26 @@
   ],
   "students": [
     {
-      "id": "stu002",
-      "firstName": "Martín",
-      "lastName": "Rodríguez",
-      "age": 25,
+      "id": "JFjl",
+      "firstName": "a",
+      "lastName": "a",
+      "age": "2",
+      "perfil": "desarrollador",
       "courses": [
         "101",
-        "102"
+        "101"
       ],
+      "sexo": "masculino"
+    },
+    {
+      "id": "p6p0",
+      "firstName": "b",
+      "lastName": "b",
+      "age": "4",
       "perfil": "desarrollador",
-      "sexo": "masculino",
-      "course": "102"
-    },
-    {
-      "id": "stu003",
-      "firstName": "Ana",
-      "lastName": "Fernández",
-      "age": 19,
-      "courses": [],
-      "perfil": "usuario final",
-      "sexo": "femenino"
-    },
-    {
-      "firstName": "eddwdwadwed",
-      "lastName": "dawdwedwed",
-      "age": "2313",
-      "courses": [],
-      "perfil": "IT",
-      "sexo": "femenino",
-      "id": "3TPV"
-    },
-    {
-      "id": "xury",
-      "firstName": "xxxxxxxxxxxxxx",
-      "lastName": "sdasdasd",
-      "age": "2322",
-      "courses": [],
-      "perfil": "desarrollador",
+      "courses": [
+        "101"
+      ],
       "sexo": "masculino"
     }
   ],
@@ -113,83 +96,5 @@
       "role": "employee"
     }
   ],
-  "enrollments": [
-    {
-      "id": "w9xm3b4fa",
-      "studentId": "stu003",
-      "courseId": "101",
-      "enrollmentDate": "2025-03-06T06:42:45.095Z",
-      "userId": "u0ewe3"
-    },
-    {
-      "id": "8xxd8b1dj",
-      "studentId": null,
-      "courseId": "102",
-      "enrollmentDate": "2023-10-01T00:00:00Z",
-      "userId": "usds03"
-    },
-    {
-      "id": "makwg4wiq",
-      "studentId": "stu003",
-      "courseId": "102",
-      "enrollmentDate": "2025-03-06T15:37:51.724Z",
-      "userId": "uee03"
-    },
-    {
-      "id": "5gcpilf5o",
-      "studentId": null,
-      "courseId": "101",
-      "enrollmentDate": "2025-03-06T18:20:21.824Z",
-      "userId": "u03"
-    },
-    {
-      "id": "l1401ayg1",
-      "studentId": "xury",
-      "courseId": "101",
-      "enrollmentDate": "2025-03-07T00:54:35.170Z",
-      "userId": "u02"
-    },
-    {
-      "id": "hsosxjgus",
-      "studentId": "xury",
-      "courseId": "102",
-      "enrollmentDate": "2025-03-07T00:54:54.725Z",
-      "userId": "u02"
-    },
-    {
-      "id": "uoh34bdwk",
-      "studentId": "stu002",
-      "courseId": "102",
-      "enrollmentDate": "2025-03-07T00:59:38.078Z",
-      "userId": "u02"
-    },
-    {
-      "id": "j278bprgh",
-      "studentId": "stu002",
-      "courseId": "101",
-      "enrollmentDate": "2025-03-07T00:59:53.086Z",
-      "userId": "u02"
-    },
-    {
-      "id": "dhtoe6fx6",
-      "studentId": "stu002",
-      "courseId": "102",
-      "enrollmentDate": "2025-03-07T01:05:32.255Z",
-      "userId": "u02"
-    },
-    {
-      "id": "wrpv4dzez",
-      "studentId": "stu002",
-      "courseId": "102",
-      "enrollmentDate": "2025-03-07T01:05:39.901Z",
-      "userId": "u02"
-    },
-    {
-      "id": "er2jgcy7o",
-      "studentId": "stu002",
-      "courseId": "101",
-      "enrollmentDate": "2025-03-07T01:05:47.621Z",
-      "userId": "u02"
-    }
-  ]
+  "enrollments": []
 }

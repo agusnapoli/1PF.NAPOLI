@@ -20,7 +20,8 @@ export class FormularioComponent {
       lastName: [null, Validators.required],
       age: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
       perfil: [null, Validators.required],
-      courses: [null, Validators.required], // Change to courses to handle multiple selections
+      courses: [null], // Change to courses to handle multiple selections and make it optional
+
 
       sexo: [null, Validators.required] // New field
     });

@@ -157,16 +157,42 @@ export class EnrollmentsComponent implements OnInit, OnDestroy {
   }
 
   deleteEnrollment(id: string): void {
-    this.enrollmentService.deleteEnrollment(id).subscribe({
-        next: () => {
-            this.store.dispatch(EnrollmentActions.deleteEnrollment({ id }));
-            this.store.dispatch(EnrollmentActions.loadEnrollments()); // Reload enrollments after deletion
-        },
-        error: (error: any) => {
-            console.error('Error deleting enrollment:', error);
-        }
+    // Buscar la inscripción correspondiente antes de eliminarla
+    this.enrollmentService.getEnrollmentById(id).subscribe(enrollment => {
+      this.selectedEnrollment = enrollment;
+      const studentId = enrollment.studentId;
+
+      this.enrollmentService.deleteEnrollment(id).subscribe({
+          next: () => {
+              this.store.dispatch(EnrollmentActions.deleteEnrollment({ id }));
+              this.store.dispatch(EnrollmentActions.loadEnrollments()); // Reload enrollments after deletion
+
+              if (studentId) {
+                this.studentsService.getStudentById(studentId).subscribe(student => {
+                const updatedCourses = (student.courses || []).filter(course => course !== enrollment.courseId);
+
+                  const updatedStudent: Student = {
+                    ...student,
+                    courses: updatedCourses
+                  };
+                  this.studentsService.updateStudent(studentId, updatedStudent).subscribe({
+                      next: () => {
+                          console.log('Curso eliminado del estudiante:', updatedStudent);
+                      },
+                      error: (error: any) => {
+                          console.error('Error al eliminar el curso del estudiante:', error);
+                      }
+                  });
+                });
+              }
+          },
+          error: (error: any) => {
+              console.error('Error deleting enrollment:', error);
+          }
+      });
     });
   }
+
 
   modifyEnrollment(enrollment: Enrollment): void {
     console.log('Editing enrollment:', enrollment); // Log para verificar datos

@@ -31,4 +31,9 @@ export class EnrollmentService {
   updateEnrollment(enrollment: Enrollment): Observable<Enrollment> {
     return this.http.put<Enrollment>(`${this.apiUrl}/${enrollment.id}`, enrollment);
   }
+
+  // Obtener una inscripción por su ID
+  getEnrollmentById(id: string): Observable<Enrollment> {
+    return this.http.get<Enrollment>(`${this.apiUrl}/${id}`);
+  }
 }
