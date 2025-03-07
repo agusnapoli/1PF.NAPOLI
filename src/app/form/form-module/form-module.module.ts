@@ -11,7 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,8 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     MatFormFieldModule,
     MatListModule,
+    MatIconModule, // Agregar el módulo de iconos a las importaciones
+
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,

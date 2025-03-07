@@ -36,26 +36,12 @@
   ],
   "students": [
     {
-      "id": "JFjl",
-      "firstName": "a",
-      "lastName": "a",
-      "age": "2",
-      "perfil": "desarrollador",
-      "courses": [
-        "101",
-        "101"
-      ],
-      "sexo": "masculino"
-    },
-    {
       "id": "p6p0",
       "firstName": "b",
       "lastName": "b",
       "age": "4",
       "perfil": "desarrollador",
-      "courses": [
-        "101"
-      ],
+      "courses": [],
       "sexo": "masculino"
     }
   ],
