@@ -5,7 +5,7 @@ import { Enrollment } from './models/enrollment.model';
 import * as EnrollmentActions from './store/enrollments.actions';
 import { StudentsService } from '../../core/students.service';
 import { CoursesService } from '../../core/courses.service';
-import { EnrollmentService } from './enrollments.service';
+import { EnrollmentService } from '../../core/enrollments.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectError, selectIsLoading, selectEnrollments } from './store/enrollments.selectors';
 import { map, startWith, catchError } from 'rxjs/operators';

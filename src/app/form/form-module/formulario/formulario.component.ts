@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select'; // Importar MatSelectChange
-import { EnrollmentService } from '../../../pages/enrollments/enrollments.service';
+import { EnrollmentService } from '../../../core/enrollments.service';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Student } from '../../../shared/models/students.model';

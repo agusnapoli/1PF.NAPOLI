@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EnrollmentService } from '../enrollments.service';
+import { EnrollmentService } from '../../../core/enrollments.service';
 import { CoursesService } from '../../../core/courses.service';
 import * as EnrollmentActions from './enrollments.actions';
 import { catchError, concatMap, map, mergeMap, of } from 'rxjs';

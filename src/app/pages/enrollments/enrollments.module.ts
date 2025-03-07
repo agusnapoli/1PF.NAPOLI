@@ -15,7 +15,7 @@ import { MatTableModule } from '@angular/material/table'; // Import MatTableModu
 
 import { EnrollmentsRoutingModule } from './enrollments-routing.module';
 import { EnrollmentsComponent } from './enrollments.component';
-import { EnrollmentService } from './enrollments.service';
+import { EnrollmentService } from '../../core/enrollments.service';
 import { enrollmentsReducer } from './store/enrollments.reducer';
 import { EnrollmentEffects } from './store/enrollments.effects';
 import { MatButton } from '@angular/material/button';
